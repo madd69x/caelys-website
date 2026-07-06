@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CAELYS Research | About</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+    <!-- Utility classes for footer & layout styling -->
+    <style>
+      .text-dim { color: var(--pale-blue); }
+      .text-center { text-align: center; }
+      footer a { color: var(--pale-blue); text-decoration: none; transition: color 0.2s; }
+      footer a:hover { color: var(--accent-color); }
+    </style>
+  </head>
+  <body>
+    <div id="global-loader">
+      <div class="loader-bg"></div>
+      <div class="loader-content">
+        <h1 class="loader-text brutal-text" id="loader-text">INITIALIZING</h1>
+        <div class="loader-bar-container"><div class="loader-bar" id="loader-bar"></div></div>
+        <button id="enter-experience-btn" class="brutal-btn" style="display: none; margin: 2rem auto 0; font-size: 1.5rem; padding: 1rem 3rem;">[ ENTER CAELYS ]</button>
+      </div>
+    </div>
+    <!-- Full Screen Flash Overlay -->
+    <div id="flash-overlay"></div>
+    
+    <!-- Custom Cursor -->
+    <div class="cursor" id="cursor"></div>
+    
+    <!-- WebGL Background -->
+    <canvas id="webgl-canvas"></canvas>
+
+    <!-- Overlay UI -->
+    <div id="ui-layer">
+      <!-- Header / Nav -->
+      <header class="header brutal-header">
+        <div class="logo-box">
+          <a href="/"><div class="logo-icon brutalist-logo"></div></a>
+        </div>
+        <nav class="nav mono-text">
+          <a href="/">[ HOME ]</a>
+          <a href="/about.html">[ ABOUT ]</a>
+          <a href="/verticals.html">[ VERTICALS ]</a>
+          <a href="/team.html">[ TEAM ]</a>
+          <a href="/register.html">[ REGISTER ]</a>
+          <a href="/admin.html">[ ADMIN ]</a>
+        </nav>
+      </header>
+
+      <main class="content" style="padding-top: 150px;">
+        
+        <!-- The Founding Story -->
+        <section class="brutal-section container" style="max-width: 1000px; margin: 0 auto; margin-bottom: 6rem;">
+            <h1 class="display-title brutal-text" style="line-height: 0.9; margin-bottom: 2rem;">THE FOUNDING<br><span style="color: var(--accent-color);">STORY</span></h1>
+            <h3 class="mono-text" style="color: var(--pale-blue); margin-bottom: 2rem; font-size: 1.5rem;">> HOW CAELYS BEGAN</h3>
+            
+            <div style="background: var(--slate-navy); border: 2px solid var(--border-color); padding: 3rem; margin-bottom: 3rem; position: relative;">
+                <p class="mono-text" style="font-size: 1.2rem; line-height: 1.8; margin-bottom: 2rem; color: var(--ivory);">
+                  CAELYS began with a simple frustration: why did the most intellectually ambitious students in Jodhpur have to leave the city to find the experiences they deserved?
+                </p>
+                <p class="mono-text" style="font-size: 1.2rem; line-height: 1.8; margin-bottom: 2rem; color: var(--pale-blue);">
+                  Disha Jariwala and Supriya Vishnoi, both veterans of the national MUN and debate circuit, decided to build the platform they wished had existed when they were starting out — one that was rigorous without being exclusionary, competitive without being toxic, and rooted in Jodhpur without being limited by it.
+                </p>
+                <p class="mono-text" style="font-size: 1.2rem; line-height: 1.8; color: var(--ivory);">
+                  CAELYS 2027 is the result of over two years of planning, research, and an unshakeable belief that the next generation of Indian leaders are already in our schools and colleges — they just need the right room to walk into.
+                </p>
+            </div>
+            
+            <div class="about-grid">
+                <div class="about-card brutal-card" style="text-align: center;">
+                    <h3 class="display-small brutal-text" style="color: var(--ivory); font-size: 2rem; margin-bottom: 0.5rem;">DISHA JARIWALA</h3>
+                    <p class="mono-text" style="color: var(--accent-color);">CEO & Co-Founder</p>
+                </div>
+                <div class="about-card brutal-card" style="text-align: center;">
+                    <h3 class="display-small brutal-text" style="color: var(--ivory); font-size: 2rem; margin-bottom: 0.5rem;">SUPRIYA VISHNOI</h3>
+                    <p class="mono-text" style="color: var(--accent-color);">COO & Co-Founder</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Purpose, Vision, Mission -->
+        <section class="brutal-section container" style="max-width: 1000px; margin: 0 auto; margin-bottom: 6rem;">
+            <div style="text-align: center; margin-bottom: 4rem;">
+                <h2 class="display-small brutal-text" style="color: var(--accent-color);">PURPOSE</h2>
+                <h3 class="hero-quote" style="font-family: 'Outfit', sans-serif; font-size: clamp(1.2rem, 2vw, 1.8rem); line-height: 1.6; font-weight: 300; font-style: italic; color: var(--ivory); max-width: 800px; margin: 1.5rem auto;">
+                    "To build India's most intellectually honest youth summit — where curiosity is rewarded, depth is valued, and every mind that walks in leaves bigger than when it arrived."
+                </h3>
+            </div>
+            
+            <div class="about-grid">
+                <div class="about-card brutal-card">
+                    <h2 class="display-small brutal-text">> OUR VISION</h2>
+                    <p class="mono-text mt-4 text-dim" style="font-size: 1.1rem; line-height: 1.6;">A Jodhpur where the most driven young minds have a world-class platform to engage, compete, and grow — without having to leave home to find it.</p>
+                </div>
+                <div class="about-card brutal-card">
+                    <h2 class="display-small brutal-text">> OUR MISSION</h2>
+                    <p class="mono-text mt-4 text-dim" style="font-size: 1.1rem; line-height: 1.6;">To design experiences — in diplomacy, rhetoric, and climate — that push students beyond performance into genuine understanding, and beyond understanding into action.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Core Philosophy -->
+        <section class="brutal-section container" style="max-width: 1200px; margin: 0 auto; margin-bottom: 6rem;">
+            <h2 class="display-large brutal-text text-center" style="margin-bottom: 3rem;">CORE PHILOSOPHY</h2>
+            <div class="about-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                <div class="about-card brutal-card">
+                    <h3 class="brutal-text" style="font-size: 1.6rem; color: var(--ivory); margin-bottom: 0.5rem;">Intellectual Honesty</h3>
+                    <p class="mono-text mt-2 text-dim" style="line-height: 1.6;">We believe in engaging with ideas on their merits — not just debating to win, but to understand.</p>
+                </div>
+                <div class="about-card brutal-card">
+                    <h3 class="brutal-text" style="font-size: 1.6rem; color: var(--ivory); margin-bottom: 0.5rem;">Collaborative Growth</h3>
+                    <p class="mono-text mt-2 text-dim" style="line-height: 1.6;">Learning happens best in community. CAELYS is designed so every participant grows through the growth of others.</p>
+                </div>
+                <div class="about-card brutal-card">
+                    <h3 class="brutal-text" style="font-size: 1.6rem; color: var(--ivory); margin-bottom: 0.5rem;">Empathy First</h3>
+                    <p class="mono-text mt-2 text-dim" style="line-height: 1.6;">Before rhetoric, we teach listening. Before solutions, we teach understanding the problem deeply.</p>
+                </div>
+                <div class="about-card brutal-card">
+                    <h3 class="brutal-text" style="font-size: 1.6rem; color: var(--ivory); margin-bottom: 0.5rem;">Excellence Without Ego</h3>
+                    <p class="mono-text mt-2 text-dim" style="line-height: 1.6;">We celebrate achievement but never at the expense of the person beside you. Healthy competition, always.</p>
+                </div>
+                <div class="about-card brutal-card">
+                    <h3 class="brutal-text" style="font-size: 1.6rem; color: var(--ivory); margin-bottom: 0.5rem;">Action-Oriented</h3>
+                    <p class="mono-text mt-2 text-dim" style="line-height: 1.6;">Ideas without outcomes are incomplete. Every vertical at CAELYS is designed to produce something tangible.</p>
+                </div>
+                <div class="about-card brutal-card">
+                    <h3 class="brutal-text" style="font-size: 1.6rem; color: var(--ivory); margin-bottom: 0.5rem;">Lifelong Learning</h3>
+                    <p class="mono-text mt-2 text-dim" style="line-height: 1.6;">CAELYS is not a finish line. It is a beginning. We want every delegate to leave hungrier than they arrived.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- What Makes CAELYS Different -->
+        <section class="brutal-section container" style="max-width: 1000px; margin: 0 auto; margin-bottom: 6rem;">
+            <h2 class="display-large brutal-text text-center" style="margin-bottom: 3rem; font-size: 3.5rem;">DIFFERENT BY DESIGN</h2>
+            <div class="about-grid">
+                <div class="about-card brutal-card">
+                    <h1 class="display-large" style="color: var(--accent-color); margin-bottom: 1rem;">01</h1>
+                    <h3 class="brutal-text" style="font-size: 1.6rem; color: var(--ivory); margin-bottom: 0.5rem;">Deliberately Small</h3>
+                    <p class="mono-text mt-2 text-dim" style="line-height: 1.6;">CAELYS is not designed to be the biggest summit. It is designed to be the most impactful. Every delegate gets real attention, real feedback, and a real experience.</p>
+                </div>
+                <div class="about-card brutal-card">
+                    <h1 class="display-large" style="color: var(--accent-color); margin-bottom: 1rem;">02</h1>
+                    <h3 class="brutal-text" style="font-size: 1.6rem; color: var(--ivory); margin-bottom: 0.5rem;">Three Verticals, One Philosophy</h3>
+                    <p class="mono-text mt-2 text-dim" style="line-height: 1.6;">Our verticals are not separate events. They share a common philosophy of depth over breadth, and outcome over performance.</p>
+                </div>
+                <div class="about-card brutal-card">
+                    <h1 class="display-large" style="color: var(--accent-color); margin-bottom: 1rem;">03</h1>
+                    <h3 class="brutal-text" style="font-size: 1.6rem; color: var(--ivory); margin-bottom: 0.5rem;">Founder-Led</h3>
+                    <p class="mono-text mt-2 text-dim" style="line-height: 1.6;">CAELYS is built and run by young people — not a corporate entity. Every decision is made with the delegate experience at the centre.</p>
+                </div>
+                <div class="about-card brutal-card">
+                    <h1 class="display-large" style="color: var(--accent-color); margin-bottom: 1rem;">04</h1>
+                    <h3 class="brutal-text" style="font-size: 1.6rem; color: var(--ivory); margin-bottom: 0.5rem;">City-First</h3>
+                    <p class="mono-text mt-2 text-dim" style="line-height: 1.6;">Jodhpur deserves a world-class intellectual platform. CAELYS is that platform — built here, for here, with global ambition.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action & Footer -->
+        <section class="brutal-section" style="background: rgba(14, 21, 37, 0.9); border-top: 2px solid var(--border-color); text-align: center; padding: 6rem 2rem; position: relative;">
+            <h2 class="display-large brutal-text">READY TO BE PART OF<br><span style="color: var(--accent-color);">SOMETHING REAL?</span></h2>
+            <button id="register-btn" class="brutal-btn mono-text mt-4" style="font-size: 1.2rem; padding: 1.5rem 4rem; text-transform: uppercase;">Register for CAELYS 2027</button>
+        </section>
+
+        <footer class="footer mono-text" style="border-top: 2px solid var(--border-color); padding: 5rem 2rem 2rem 2rem; background: var(--deep-space); position: relative;">
+            <div class="container about-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); margin-bottom: 4rem; gap: 4rem;">
+                <div>
+                    <h3 class="brutal-text" style="font-size: 1.8rem; margin-bottom: 1rem; color: var(--ivory);">CAELYS</h3>
+                    <p class="text-dim" style="line-height: 1.6;">Youth Summit<br>Jodhpur, 2027</p>
+                </div>
+                <div>
+                    <h3 class="brutal-text" style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--ivory);">PAGES</h3>
+                    <ul style="list-style: none; padding: 0; line-height: 2;">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/about.html">About</a></li>
+                        <li><a href="/verticals.html">Verticals</a></li>
+                        <li><a href="/team.html">Team</a></li>
+                        <li><a href="/register.html">Register</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="brutal-text" style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--ivory);">CONNECT</h3>
+                    <p class="text-dim" style="line-height: 2;">
+                        <a href="#">@caelysyouthsummit</a><br>
+                        <a href="#">caelys.in</a>
+                    </p>
+                </div>
+            </div>
+            <div class="container" style="text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); color: var(--pale-blue); font-size: 0.9rem;">
+                &copy; 2026 CAELYS Youth Summit. All rights reserved.
+            </div>
+        </footer>
+
+      </main>
+    </div>
+
+    <!-- Scripts -->
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>

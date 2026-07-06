@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CAELYS Research | Register</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+    <style>
+      .text-dim { color: var(--pale-blue); }
+      .text-center { text-align: center; }
+      footer a { color: var(--pale-blue); text-decoration: none; transition: color 0.2s; }
+      footer a:hover { color: var(--accent-color); }
+      
+      .register-card {
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+      .register-card.selected {
+        border-color: var(--accent-color);
+        box-shadow: 10px 10px 0 var(--accent-color);
+        background: rgba(28, 34, 60, 0.95);
+      }
+      .register-card:hover:not(.selected) {
+        border-color: var(--ivory);
+      }
+      
+      .card-action {
+        padding: 0.8rem;
+        background: transparent;
+        color: var(--ivory);
+        border: 2px solid var(--ivory);
+        transition: all 0.2s;
+      }
+      .register-card.selected .card-action {
+        background: var(--accent-color);
+        color: var(--deep-space);
+        border-color: var(--accent-color);
+      }
+      
+      .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+      }
+      @media (max-width: 768px) {
+        .form-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      
+      .brutal-label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-family: 'Space Mono', monospace;
+        color: var(--ivory);
+        font-size: 1.1rem;
+      }
+      select.brutal-input option {
+        background: var(--deep-space);
+        color: var(--ivory);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="global-loader">
+      <div class="loader-bg"></div>
+      <div class="loader-content">
+        <h1 class="loader-text brutal-text" id="loader-text">INITIALIZING</h1>
+        <div class="loader-bar-container"><div class="loader-bar" id="loader-bar"></div></div>
+        <button id="enter-experience-btn" class="brutal-btn" style="display: none; margin: 2rem auto 0; font-size: 1.5rem; padding: 1rem 3rem;">[ ENTER CAELYS ]</button>
+      </div>
+    </div>
+    <div id="flash-overlay"></div>
+    <div class="cursor" id="cursor"></div>
+    <canvas id="webgl-canvas"></canvas>
+
+    <div id="ui-layer">
+      <!-- Header / Nav -->
+      <header class="header brutal-header">
+        <div class="logo-box">
+          <a href="/"><div class="logo-icon brutalist-logo"></div></a>
+        </div>
+        <nav class="nav mono-text">
+          <a href="/">[ HOME ]</a>
+          <a href="/about.html">[ ABOUT ]</a>
+          <a href="/verticals.html">[ VERTICALS ]</a>
+          <a href="/team.html">[ TEAM ]</a>
+          <a href="/register.html">[ REGISTER ]</a>
+          <a href="/admin.html">[ ADMIN ]</a>
+        </nav>
+      </header>
+
+      <main class="content" style="padding-top: 150px;">
+        
+        <!-- Hero Section -->
+        <section class="brutal-section container" style="max-width: 1000px; margin: 0 auto; margin-bottom: 4rem; text-align: center;">
+            <h3 class="mono-text text-dim">> JODHPUR, 2027</h3>
+            <h1 class="display-title brutal-text" style="line-height: 0.9; margin-top: 1rem; margin-bottom: 2rem; font-size: clamp(3rem, 6vw, 6rem);">YOUR SEAT AT<br><span style="color: var(--accent-color);">THE TABLE</span></h1>
+            <p class="mono-text text-dim" style="font-size: 1.2rem; max-width: 800px; margin: 0 auto;">
+              Choose your vertical, fill in your details, and secure your place at CAELYS 2027. Seats are limited.
+            </p>
+        </section>
+
+        <!-- Vertical Selection Grid -->
+        <section class="brutal-section container" style="max-width: 1200px; margin: 0 auto; margin-bottom: 6rem;">
+            <h3 class="mono-text" style="color: var(--ivory); font-size: 1.2rem; margin-bottom: 2rem; text-align: center;">Select your vertical to register</h3>
+            
+            <div class="about-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                
+                <!-- MUN -->
+                <div class="about-card brutal-card register-card" data-vertical="Model United Nations">
+                    <h3 class="brutal-text" style="font-size: 1.8rem; color: var(--ivory); margin-bottom: 1rem;">Model United Nations</h3>
+                    <p class="mono-text text-dim" style="margin-bottom: 2rem;">Rs. 1500 – 2500</p>
+                    <div class="mono-text card-action" style="align-self: stretch; text-align: center;">Select & Register</div>
+                </div>
+
+                <!-- Debate (Default Selected) -->
+                <div class="about-card brutal-card register-card selected" data-vertical="Debate & Rhetoric">
+                    <h3 class="brutal-text" style="font-size: 1.8rem; color: var(--ivory); margin-bottom: 1rem;">Debate & Rhetoric</h3>
+                    <p class="mono-text text-dim" style="margin-bottom: 2rem;">Rs. 1500 – 2500</p>
+                    <div class="mono-text card-action" style="align-self: stretch; text-align: center;">Selected ✓</div>
+                </div>
+
+                <!-- Climate Conclave -->
+                <div class="about-card brutal-card register-card" data-vertical="Climate Conclave">
+                    <h3 class="brutal-text" style="font-size: 1.8rem; color: var(--ivory); margin-bottom: 1rem;">Climate Conclave</h3>
+                    <p class="mono-text text-dim" style="margin-bottom: 2rem;">Rs. 1500 – 2500</p>
+                    <div class="mono-text card-action" style="align-self: stretch; text-align: center;">Select & Register</div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Registration Form -->
+        <section class="brutal-section container" style="max-width: 1000px; margin: 0 auto; margin-bottom: 8rem;">
+            <div style="background: rgba(14, 21, 37, 0.7); border: 2px solid var(--border-color); padding: 4rem; backdrop-filter: blur(10px);">
+                
+                <h3 class="mono-text text-dim" style="margin-bottom: 0.5rem; font-size: 1.2rem;">Registering for</h3>
+                <h2 id="selected-vertical-name" class="display-large brutal-text" style="color: var(--accent-color); margin-bottom: 3rem;">Debate & Rhetoric</h2>
+
+                <form id="registration-form">
+                    
+                    <div class="form-grid">
+                        <div class="brutal-input-group">
+                            <label class="brutal-label">Full Name</label>
+                            <input id="form-name" type="text" class="brutal-input" placeholder="Your full name" required>
+                        </div>
+                        <div class="brutal-input-group">
+                            <label class="brutal-label">Age</label>
+                            <input type="number" class="brutal-input" placeholder="Your age" required>
+                        </div>
+                    </div>
+
+                    <div class="brutal-input-group mt-4">
+                        <label class="brutal-label">School / College / Organisation</label>
+                        <input id="form-inst" type="text" class="brutal-input" placeholder="Institution name" required>
+                    </div>
+
+                    <div class="form-grid mt-4">
+                        <div class="brutal-input-group">
+                            <label class="brutal-label">City & State</label>
+                            <input type="text" class="brutal-input" placeholder="e.g. Jodhpur, Rajasthan" required>
+                        </div>
+                        <div class="brutal-input-group">
+                            <label class="brutal-label">Email Address</label>
+                            <input id="form-email" type="email" class="brutal-input" placeholder="your@email.com" required>
+                        </div>
+                    </div>
+
+                    <div class="form-grid mt-4">
+                        <div class="brutal-input-group">
+                            <label class="brutal-label">Phone Number</label>
+                            <input id="form-phone" type="tel" class="brutal-input" placeholder="+91 XXXXX XXXXX" required>
+                        </div>
+                        <div class="brutal-input-group">
+                            <label class="brutal-label">Prior Experience</label>
+                            <select class="brutal-input" required>
+                                <option value="" disabled selected>Select one</option>
+                                <option value="none">None (First timer)</option>
+                                <option value="1-2">1-2 events</option>
+                                <option value="3-5">3-5 events</option>
+                                <option value="5+">5+ events</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-grid mt-4">
+                        <div class="brutal-input-group">
+                            <label class="brutal-label">Registering as</label>
+                            <select class="brutal-input" required>
+                                <option value="" disabled selected>Select one</option>
+                                <option value="individual">Individual</option>
+                                <option value="delegation">School Delegation</option>
+                                <option value="team">Team (Debate)</option>
+                            </select>
+                        </div>
+                        <div class="brutal-input-group">
+                            <label class="brutal-label">Dietary Requirements</label>
+                            <input type="text" class="brutal-input" placeholder="e.g. Vegetarian, Vegan, No allergies">
+                        </div>
+                    </div>
+
+                    <div class="form-grid mt-4">
+                        <div class="brutal-input-group">
+                            <label class="brutal-label">Emergency Contact Name</label>
+                            <input type="text" class="brutal-input" placeholder="Parent / Guardian name" required>
+                        </div>
+                        <div class="brutal-input-group">
+                            <label class="brutal-label">Emergency Contact Number</label>
+                            <input type="tel" class="brutal-input" placeholder="+91 XXXXX XXXXX" required>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 4rem; text-align: center;">
+                        <button type="submit" class="brutal-btn mono-text" style="font-size: 1.5rem; padding: 1.5rem 4rem; width: 100%; max-width: 600px; text-transform: uppercase;">
+                            Submit Registration →
+                        </button>
+                        <p class="mono-text text-dim" style="margin-top: 2rem; font-size: 0.9rem; line-height: 1.6; max-width: 600px; margin-left: auto; margin-right: auto;">
+                            Full refund available until 168 hours before the event. No refund after that. For queries, contact us at <a href="mailto:registrations@caelys.in" style="color: var(--accent-color);">registrations@caelys.in</a>
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer mono-text" style="border-top: 2px solid var(--border-color); padding: 5rem 2rem 2rem 2rem; background: var(--deep-space); position: relative;">
+            <div class="container about-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); margin-bottom: 4rem; gap: 4rem;">
+                <div>
+                    <h3 class="brutal-text" style="font-size: 1.8rem; margin-bottom: 1rem; color: var(--ivory);">CAELYS</h3>
+                    <p class="text-dim" style="line-height: 1.6;">Youth Summit<br>Jodhpur, 2027</p>
+                </div>
+                <div>
+                    <h3 class="brutal-text" style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--ivory);">PAGES</h3>
+                    <ul style="list-style: none; padding: 0; line-height: 2;">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/about.html">About</a></li>
+                        <li><a href="/verticals.html">Verticals</a></li>
+                        <li><a href="/team.html">Team</a></li>
+                        <li><a href="/register.html">Register</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="brutal-text" style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--ivory);">CONNECT</h3>
+                    <p class="text-dim" style="line-height: 2;">
+                        <a href="#">@caelysyouthsummit</a><br>
+                        <a href="#">caelys.in</a>
+                    </p>
+                </div>
+            </div>
+            <div class="container" style="text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); color: var(--pale-blue); font-size: 0.9rem;">
+                &copy; 2026 CAELYS Youth Summit. All rights reserved.
+            </div>
+        </footer>
+
+      </main>
+    </div>
+
+    <!-- Scripts -->
+    <script type="module" src="/main.js"></script>
+    <script>
+        const form = document.getElementById('registration-form');
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = form.querySelector('button[type="submit"]');
+            btn.innerText = 'PROCESSING...';
+            btn.style.opacity = '0.5';
+            
+            const name = document.getElementById('form-name').value;
+            const email = document.getElementById('form-email').value;
+            const phone = document.getElementById('form-phone').value;
+            const institution = document.getElementById('form-inst').value;
+            const vertical = document.getElementById('selected-vertical-name').innerText;
+            
+            try {
+                const response = await fetch('http://localhost:3001/api/register', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, email, phone, vertical, institution })
+                });
+                
+                if (response.ok) {
+                    form.innerHTML = '<h2 class="display-large brutal-text" style="color: var(--accent-color); text-align: center; width: 100%;">TICKET SECURED ✓</h2><p class="mono-text text-dim" style="text-align: center; margin-top: 2rem; font-size: 1.2rem;">Your registration has been recorded in the CAELYS system.</p>';
+                } else {
+                    alert('Registration failed. Please try again.');
+                    btn.innerText = 'Submit Registration →';
+                    btn.style.opacity = '1';
+                }
+            } catch (err) {
+                console.error(err);
+                alert('Server connection failed. Is the backend running?');
+                btn.innerText = 'Submit Registration →';
+                btn.style.opacity = '1';
+            }
+        });
+    </script>
+  </body>
+</html>

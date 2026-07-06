@@ -1,0 +1,8 @@
+run = "npm run dev -- --host 0.0.0.0"
+entrypoint = "main.js"
+
+[nix]
+channel = "stable-23_05"
+
+[env]
+VITE_CJS_IGNORE_WARNING = "true"
