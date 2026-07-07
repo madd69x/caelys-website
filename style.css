@@ -34,11 +34,16 @@ body {
   width: 12px;
   height: 12px;
   background-color: var(--accent-color);
+  border: 0 solid var(--accent-color);
   border-radius: 0; /* Brutalist square cursor */
   pointer-events: none;
   transform: translate(-50%, -50%);
   z-index: 9999;
-  transition: width 0.2s, height 0.2s, background-color 0.2s;
+  transition: width 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+              height 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+              background-color 0.3s, 
+              border 0.3s, 
+              border-radius 0.3s;
   mix-blend-mode: difference;
 }
 
@@ -119,19 +124,21 @@ body {
   left: 0;
   width: 100%;
   padding: 2rem;
+  background: transparent;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 100;
-  background: transparent;
-  border-bottom: 2px solid transparent;
+  z-index: 1000;
   transition: all 0.3s ease;
 }
 
 .brutal-header.scrolled {
-  background: var(--deep-space);
-  border-bottom: 2px solid var(--border-color);
+  background: rgba(28, 34, 60, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
   padding: 1rem 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 .brutalist-logo {
@@ -140,7 +147,7 @@ body {
   border: 4px solid var(--accent-color);
   position: relative;
 }
-.brutalist-logo::after {
+.brutalist-logo::after, .brutalist-logo::before {
   content: '';
   position: absolute;
   top: 50%;
@@ -148,7 +155,12 @@ body {
   width: 100%;
   height: 4px;
   background: var(--ivory);
+}
+.brutalist-logo::after {
   transform: translate(-50%, -50%) rotate(45deg);
+}
+.brutalist-logo::before {
+  transform: translate(-50%, -50%) rotate(-45deg);
 }
 
 /* Typography Utilities */
@@ -254,12 +266,19 @@ body {
   pointer-events: none;
 }
 
+.footer {
+  position: relative;
+  z-index: 100;
+  width: 100%;
+}
+
 /* Marquee */
 .marquee-container {
   position: absolute;
   top: 0;
   left: -25vw;
-  width: 150vw; /* Ensure it covers diagonally */
+  width: 150vw !important; /* Ensure it covers diagonally */
+  max-width: none !important; /* Override global max-width */
   transform: translateY(-50%) rotate(-15deg);
   overflow: hidden;
   background: var(--accent-color);
@@ -269,7 +288,11 @@ body {
   border-bottom: 4px solid var(--ivory);
 }
 .marquee-content {
-  white-space: nowrap;
+  white-space: nowrap !important;
+  word-wrap: normal !important;
+  word-break: keep-all !important;
+  overflow-wrap: normal !important;
+  max-width: none !important;
   font-size: 1.5rem;
   font-weight: 700;
   animation: scrollMarquee 15s linear infinite;
@@ -322,18 +345,23 @@ section {
   padding-right: 4rem;
 }
 
-/* About Grid */
+/* About Grid (Flexbox implementation for centered wrapping) */
 .about-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  display: flex !important;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 2rem;
+}
+.about-grid > * {
+  flex: 1 1 300px;
+  max-width: 350px;
 }
 .brutal-card {
   border: 2px solid var(--border-color);
   padding: 2rem;
   background: rgba(28, 34, 60, 0.8);
-  backdrop-filter: blur(5px);
-  transition: all 0.3s;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+  position: relative;
   display: flex;
   flex-direction: column;
 }
@@ -342,8 +370,8 @@ section {
   align-self: flex-start;
 }
 .brutal-card:hover {
-  transform: translate(-10px, -10px);
-  box-shadow: 10px 10px 0 var(--accent-color);
+  transform: translateY(-10px) perspective(1000px) rotateX(2deg) rotateY(-2deg);
+  box-shadow: 15px 15px 30px rgba(144, 170, 214, 0.15), -5px -5px 15px rgba(247, 246, 241, 0.05);
 }
 .brutal-card h3 {
   font-size: 1.5rem;
@@ -375,19 +403,38 @@ section {
 }
 
 .brutal-btn {
-  background: var(--accent-color);
+  background: var(--ivory);
   color: var(--deep-space);
-  border: 4px solid var(--accent-color);
+  border: 2px solid var(--ivory);
   padding: 1.5rem 3rem;
   font-size: 1.5rem;
   font-weight: 700;
   cursor: none;
   text-transform: uppercase;
-  transition: all 0.2s;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+.brutal-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--accent-color);
+  transition: left 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: -1;
+}
+.brutal-btn:hover::before {
+  left: 0;
 }
 .brutal-btn:hover {
-  background: transparent;
-  color: var(--accent-color);
+  color: var(--deep-space);
+  border-color: var(--accent-color);
+  box-shadow: 0 10px 20px rgba(144, 170, 214, 0.3);
+  transform: translateY(-2px);
 }
 
 .countdown-grid {
@@ -453,7 +500,7 @@ section {
   
   #ribbon-group {
     width: 100vw;
-    overflow: hidden;
+    overflow: visible;
   }
 }
 
@@ -637,4 +684,145 @@ body::before {
 }
 #countdown-timer .brutal-card:hover {
   transform: translate(-5px, -5px) scale(1.05);
+}
+
+/* ==========================================
+   MOBILE MENU & TABLET ALIGNMENT
+   ========================================== */
+
+.mobile-menu-btn {
+  display: none;
+  background: transparent;
+  border: none;
+  color: var(--ivory);
+  font-size: 2.5rem;
+  cursor: pointer;
+  z-index: 200;
+  position: relative;
+}
+
+.mobile-nav-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(28, 34, 60, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 150;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  transform: translateY(-100%);
+  transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+  will-change: transform;
+}
+.mobile-nav-panel.active {
+  transform: translateY(0);
+}
+
+.mobile-nav-panel a {
+  color: var(--ivory);
+  text-decoration: none;
+  font-family: 'Space Mono', monospace;
+  font-size: 2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+.mobile-nav-panel a:hover, .mobile-nav-panel a:active {
+  color: var(--accent-color);
+}
+
+#dynamic-tagline {
+  min-height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+}
+
+@media (max-width: 900px) {
+  .nav { display: none !important; }
+  .mobile-menu-btn { display: block !important; }
+  .brutal-header {
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+  }
+  .display-title, .brutal-card p, .brutal-card h2, .brutal-card h3 {
+    text-align: center;
+  }
+  .about-grid, .countdown-grid {
+    align-items: stretch;
+    justify-items: stretch;
+  }
+}
+
+/* ==========================================
+   GLOBAL FLUID RESPONSIVENESS
+   ========================================== */
+
+/* Universal media constraints */
+img, video, canvas, iframe {
+  max-width: 100% !important;
+  height: auto !important;
+}
+canvas#webgl-canvas {
+  width: 100vw !important;
+  height: 100vh !important;
+}
+
+/* Fluid Typography */
+.display-title {
+  font-size: clamp(3rem, 8vw, 12rem);
+  word-wrap: break-word;
+}
+.display-large {
+  font-size: clamp(2.5rem, 6vw, 8rem);
+  word-wrap: break-word;
+}
+.display-small {
+  font-size: clamp(1.2rem, 3vw, 2.5rem);
+}
+.brutal-text, .mono-text, p, h1, h2, h3, h4, h5, h6 {
+  max-width: 100%;
+}
+
+/* Box sizing and padding overrides for small screens */
+@media (max-width: 900px) {
+  * {
+    overflow-wrap: break-word !important;
+    word-wrap: break-word !important;
+    word-break: break-word !important;
+  }
+  body, html {
+    overflow-x: hidden;
+    width: 100%;
+  }
+  section, .brutal-section, .container {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  /* Target inline large paddings */
+  div[style*="padding: 3rem"], .brutal-card {
+    padding: 1.5rem !important;
+  }
+  .brutal-header {
+    padding: 1rem !important;
+  }
+  /* Stack buttons */
+  .brutal-btn {
+    width: 100% !important;
+    font-size: 1.1rem !important;
+    padding: 1rem !important;
+  }
 }

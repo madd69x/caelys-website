@@ -59,6 +59,8 @@
     </style>
   </head>
   <body>
+    <!-- Brutalist Noise Overlay -->
+    <div class="noise-overlay" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 9998; opacity: 0.04; background-image: url('data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E');"></div>
     <div id="global-loader">
       <div class="loader-bg"></div>
       <div class="loader-content">
@@ -95,93 +97,170 @@
             <h1 class="display-title brutal-text" style="line-height: 0.9; margin-top: 1rem; font-size: clamp(3rem, 6vw, 6rem);">THE PEOPLE<br><span style="color: var(--accent-color);">BUILDING CAELYS</span></h1>
         </section>
 
-        <!-- Leadership Section -->
+                <!-- Core Section -->
         <section class="brutal-section container" style="max-width: 1000px; margin: 0 auto; margin-bottom: 6rem;">
-            <h2 class="display-large brutal-text" style="margin-bottom: 3rem;">LEADERSHIP</h2>
-            <h3 class="brutal-text" style="font-size: 2rem; color: var(--ivory); margin-bottom: 2rem;">Our Founders</h3>
+            <h2 class="display-large brutal-text" style="margin-bottom: 3rem;">CORE</h2>
             
-            <div class="about-grid" style="grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 4rem;">
-                <!-- Founder 1 -->
+            <div class="about-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 4rem;">
+                <!-- Member -->
                 <div>
                     <div class="photo-placeholder">
                         <p>Photo Coming Soon</p>
                     </div>
-                    <h3 class="display-small brutal-text" style="color: var(--ivory); margin-bottom: 0.5rem;">DISHA JARIWALA</h3>
-                    <p class="mono-text" style="color: var(--accent-color); font-weight: bold; margin-bottom: 1.5rem;">CEO & Co-Founder</p>
-                    <p class="mono-text text-dim" style="line-height: 1.8;">
-                        A veteran of the national MUN and debate circuit, Disha brings rigour, vision, and an unyielding belief that Jodhpur deserves a world-class intellectual platform. She leads strategy, partnerships, and the overall CAELYS experience.
-                    </p>
+                    <h3 class="display-small brutal-text" style="color: var(--ivory); margin-bottom: 0.5rem;">DISHA VISHAL JARIWALA</h3>
+                    <p class="mono-text" style="color: var(--accent-color); font-weight: bold; margin-bottom: 1.5rem;">Chief Executive Officer</p>
                 </div>
                 
-                <!-- Founder 2 -->
+                <!-- Member -->
                 <div>
                     <div class="photo-placeholder">
                         <p>Photo Coming Soon</p>
                     </div>
                     <h3 class="display-small brutal-text" style="color: var(--ivory); margin-bottom: 0.5rem;">SUPRIYA VISHNOI</h3>
-                    <p class="mono-text" style="color: var(--accent-color); font-weight: bold; margin-bottom: 1.5rem;">COO & Co-Founder</p>
-                    <p class="mono-text text-dim" style="line-height: 1.8;">
-                        Supriya is the operational backbone of CAELYS — designing systems, building the team, and ensuring every detail of the delegate experience is executed with precision. She has competed at the highest levels of academic debate.
-                    </p>
+                    <p class="mono-text" style="color: var(--accent-color); font-weight: bold; margin-bottom: 1.5rem;">Chief Operative Officer</p>
+                </div>
+
+                <!-- Member -->
+                <div>
+                    <div class="photo-placeholder">
+                        <p>Photo Coming Soon</p>
+                    </div>
+                    <h3 class="display-small brutal-text" style="color: var(--ivory); margin-bottom: 0.5rem;">SAMRIDDHI DADSENA</h3>
+                    <p class="mono-text" style="color: var(--accent-color); font-weight: bold; margin-bottom: 1.5rem;">Vice President</p>
                 </div>
             </div>
         </section>
 
-        <!-- The Builders Section -->
+        <!-- Departments Section -->
         <section class="brutal-section container" style="max-width: 1000px; margin: 0 auto; margin-bottom: 8rem;">
-            <h2 class="display-large brutal-text" style="margin-bottom: 1rem;">THE BUILDERS</h2>
-            <p class="mono-text text-dim" style="font-size: 1.2rem; margin-bottom: 2rem;">Core Team</p>
+            <h2 class="display-large brutal-text" style="margin-bottom: 1rem;">DEPARTMENTS</h2>
             
-            <!-- Verticals -->
-            <h3 class="brutal-text team-category" style="font-size: 1.8rem; color: var(--ivory);">Verticals</h3>
-            <div class="about-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem;">
+            <!-- Human Resources -->
+            <h3 class="brutal-text team-category" style="font-size: 1.8rem; color: var(--ivory);">Human Resources</h3>
+            <div class="about-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem;">
                 <div class="about-card brutal-card" style="text-align: center;">
-                    <div class="initials-block"><h1 class="brutal-text">AM</h1></div>
-                    <h3 class="brutal-text" style="font-size: 1.5rem; color: var(--ivory); margin-bottom: 0.5rem;">Arjun Mehta</h3>
+                    <div class="initials-block"><h1 class="brutal-text">PS</h1></div>
+                    <h3 class="brutal-text" style="font-size: 1.5rem; color: var(--ivory); margin-bottom: 0.5rem;">Praveen Singh</h3>
+                    <p class="mono-text text-dim">Director of Human Resources</p>
+                </div>
+                <div class="about-card brutal-card" style="text-align: center;">
+                    <div class="initials-block"><h1 class="brutal-text">DR</h1></div>
+                    <h3 class="brutal-text" style="font-size: 1.5rem; color: var(--ivory); margin-bottom: 0.5rem;">Diksha Ramchandani</h3>
+                    <p class="mono-text text-dim">Head of Human Resources</p>
+                </div>
+                <div class="about-card brutal-card" style="text-align: center;">
+                    <div class="initials-block"><h1 class="brutal-text">VC</h1></div>
+                    <h3 class="brutal-text" style="font-size: 1.5rem; color: var(--ivory); margin-bottom: 0.5rem;">Vanshika Choudhary</h3>
+                    <p class="mono-text text-dim">Assistant Head of Human Resources</p>
+                </div>
+                <div class="about-card brutal-card" style="text-align: center;">
+                    <div class="initials-block"><h1 class="brutal-text">AS</h1></div>
+                    <h3 class="brutal-text" style="font-size: 1.5rem; color: var(--ivory); margin-bottom: 0.5rem;">Ananya Singh</h3>
+                    <p class="mono-text text-dim">Assistant Lead of Human Resources</p>
+                </div>
+            </div>
+
+            <!-- Technology and Content -->
+            <h3 class="brutal-text team-category" style="font-size: 1.8rem; color: var(--ivory);">Technology and Content</h3>
+            <div class="about-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem;">
+                <div class="about-card brutal-card" style="text-align: center;">
+                    <div class="initials-block"><h1 class="brutal-text">MV</h1></div>
+                    <h3 class="brutal-text" style="font-size: 1.5rem; color: var(--ivory); margin-bottom: 0.5rem;">Mudit Vaishnav</h3>
+                    <p class="mono-text text-dim">Director of Technology and Content</p>
+                </div>
+                <div class="about-card brutal-card" style="text-align: center;">
+                    <div class="initials-block"><h1 class="brutal-text">SK</h1></div>
+                    <h3 class="brutal-text" style="font-size: 1.5rem; color: var(--ivory); margin-bottom: 0.5rem;">Siddhi Kothiwal</h3>
+                    <p class="mono-text text-dim">Head of Technology and Content</p>
+                </div>
+                <div class="about-card brutal-card" style="text-align: center;">
+                    <div class="initials-block"><h1 class="brutal-text">NM</h1></div>
+                    <h3 class="brutal-text" style="font-size: 1.5rem; color: var(--ivory); margin-bottom: 0.5rem;">Netri Mishra</h3>
+                    <p class="mono-text text-dim">Content Designer</p>
+                </div>
+                <div class="about-card brutal-card" style="text-align: center;">
+                    <div class="initials-block"><h1 class="brutal-text">LS</h1></div>
+                    <h3 class="brutal-text" style="font-size: 1.5rem; color: var(--ivory); margin-bottom: 0.5rem;">Laksh Singh</h3>
+                    <p class="mono-text text-dim">Content Designer</p>
+                </div>
+                <div class="about-card brutal-card" style="text-align: center;">
+                    <div class="initials-block"><h1 class="brutal-text">VT</h1></div>
+                    <h3 class="brutal-text" style="font-size: 1.5rem; color: var(--ivory); margin-bottom: 0.5rem;">Vaishnavi Tiwari</h3>
+                    <p class="mono-text text-dim">Video and Media Producer</p>
+                </div>
+                <div class="about-card brutal-card" style="text-align: center;">
+                    <div class="initials-block"><h1 class="brutal-text">MM</h1></div>
+                    <h3 class="brutal-text" style="font-size: 1.5rem; color: var(--ivory); margin-bottom: 0.5rem;">Mahima Meena</h3>
+                    <p class="mono-text text-dim">Video and Media Producer</p>
+                </div>
+            </div>
+
+            <!-- Public Relations and Marketing -->
+            <h3 class="brutal-text team-category" style="font-size: 1.8rem; color: var(--ivory);">Public Relations and Marketing</h3>
+            <div class="about-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem;">
+                <div class="about-card brutal-card" style="text-align: center;">
+                    <div class="initials-block"><h1 class="brutal-text">SS</h1></div>
+                    <h3 class="brutal-text" style="font-size: 1.5rem; color: var(--ivory); margin-bottom: 0.5rem;">Samiksha Saran</h3>
+                    <p class="mono-text text-dim">Director of Public Relations and Marketing</p>
+                </div>
+                <div class="about-card brutal-card" style="text-align: center;">
+                    <div class="initials-block"><h1 class="brutal-text">GM</h1></div>
+                    <h3 class="brutal-text" style="font-size: 1.5rem; color: var(--ivory); margin-bottom: 0.5rem;">Gaurav Malpani</h3>
+                    <p class="mono-text text-dim">Head of Public Relations and Marketing</p>
+                </div>
+                <div class="about-card brutal-card" style="text-align: center;">
+                    <div class="initials-block"><h1 class="brutal-text">JS</h1></div>
+                    <h3 class="brutal-text" style="font-size: 1.5rem; color: var(--ivory); margin-bottom: 0.5rem;">Jeevika Saran</h3>
+                    <p class="mono-text text-dim">Head of Public Relations and Marketing</p>
+                </div>
+                <div class="about-card brutal-card" style="text-align: center;">
+                    <div class="initials-block"><h1 class="brutal-text">SS</h1></div>
+                    <h3 class="brutal-text" style="font-size: 1.5rem; color: var(--ivory); margin-bottom: 0.5rem;">Shagun Singhvi</h3>
+                    <p class="mono-text text-dim">Outreach Coordinator</p>
+                </div>
+                <div class="about-card brutal-card" style="text-align: center;">
+                    <div class="initials-block"><h1 class="brutal-text">PR</h1></div>
+                    <h3 class="brutal-text" style="font-size: 1.5rem; color: var(--ivory); margin-bottom: 0.5rem;">Pratibha Raj</h3>
+                    <p class="mono-text text-dim">Assistant Head of PR and Marketing</p>
+                </div>
+                <div class="about-card brutal-card" style="text-align: center;">
+                    <div class="initials-block"><h1 class="brutal-text">MD</h1></div>
+                    <h3 class="brutal-text" style="font-size: 1.5rem; color: var(--ivory); margin-bottom: 0.5rem;">Mahi Dubey</h3>
+                    <p class="mono-text text-dim">Assistant Lead of PR and Marketing</p>
+                </div>
+                <div class="about-card brutal-card" style="text-align: center;">
+                    <div class="initials-block"><h1 class="brutal-text">NB</h1></div>
+                    <h3 class="brutal-text" style="font-size: 1.5rem; color: var(--ivory); margin-bottom: 0.5rem;">Nitima Bishnoi</h3>
+                    <p class="mono-text text-dim">Assistant Lead of PR and Marketing</p>
+                </div>
+            </div>
+
+            <!-- Programmes -->
+            <h3 class="brutal-text team-category" style="font-size: 1.8rem; color: var(--ivory);">Programmes</h3>
+            <div class="about-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem;">
+                <div class="about-card brutal-card" style="text-align: center;">
+                    <div class="initials-block"><h1 class="brutal-text">PG</h1></div>
+                    <h3 class="brutal-text" style="font-size: 1.5rem; color: var(--ivory); margin-bottom: 0.5rem;">Palak Gumasta</h3>
+                    <p class="mono-text text-dim">Head of Debate/ Rhetorics</p>
+                </div>
+                <div class="about-card brutal-card" style="text-align: center;">
+                    <div class="initials-block"><h1 class="brutal-text">AJ</h1></div>
+                    <h3 class="brutal-text" style="font-size: 1.5rem; color: var(--ivory); margin-bottom: 0.5rem;">Aditi Jangid</h3>
                     <p class="mono-text text-dim">Head of MUN</p>
                 </div>
                 <div class="about-card brutal-card" style="text-align: center;">
-                    <div class="initials-block"><h1 class="brutal-text">PS</h1></div>
-                    <h3 class="brutal-text" style="font-size: 1.5rem; color: var(--ivory); margin-bottom: 0.5rem;">Priya Sharma</h3>
-                    <p class="mono-text text-dim">Head of Debate</p>
+                    <div class="initials-block"><h1 class="brutal-text">HB</h1></div>
+                    <h3 class="brutal-text" style="font-size: 1.5rem; color: var(--ivory); margin-bottom: 0.5rem;">Harman Kaur Bakshi</h3>
+                    <p class="mono-text text-dim">Head of MUN</p>
                 </div>
                 <div class="about-card brutal-card" style="text-align: center;">
-                    <div class="initials-block"><h1 class="brutal-text">RG</h1></div>
-                    <h3 class="brutal-text" style="font-size: 1.5rem; color: var(--ivory); margin-bottom: 0.5rem;">Rohan Gupta</h3>
+                    <div class="initials-block"><h1 class="brutal-text">SH</h1></div>
+                    <h3 class="brutal-text" style="font-size: 1.5rem; color: var(--ivory); margin-bottom: 0.5rem;">Shiv K. Haswani</h3>
                     <p class="mono-text text-dim">Head of Climate Conclave</p>
                 </div>
             </div>
-
-            <!-- Creative -->
-            <h3 class="brutal-text team-category" style="font-size: 1.8rem; color: var(--ivory);">Creative</h3>
-            <div class="about-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem;">
-                <div class="about-card brutal-card" style="text-align: center;">
-                    <div class="initials-block"><h1 class="brutal-text">AR</h1></div>
-                    <h3 class="brutal-text" style="font-size: 1.5rem; color: var(--ivory); margin-bottom: 0.5rem;">Anika Rathore</h3>
-                    <p class="mono-text text-dim">Head of Design</p>
-                </div>
-            </div>
-
-            <!-- Operations -->
-            <h3 class="brutal-text team-category" style="font-size: 1.8rem; color: var(--ivory);">Operations</h3>
-            <div class="about-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem;">
-                <div class="about-card brutal-card" style="text-align: center;">
-                    <div class="initials-block"><h1 class="brutal-text">VS</h1></div>
-                    <h3 class="brutal-text" style="font-size: 1.5rem; color: var(--ivory); margin-bottom: 0.5rem;">Varun Singh</h3>
-                    <p class="mono-text text-dim">Head of Tech</p>
-                </div>
-            </div>
-
-            <!-- Growth -->
-            <h3 class="brutal-text team-category" style="font-size: 1.8rem; color: var(--ivory);">Growth</h3>
-            <div class="about-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem;">
-                <div class="about-card brutal-card" style="text-align: center;">
-                    <div class="initials-block"><h1 class="brutal-text">MJ</h1></div>
-                    <h3 class="brutal-text" style="font-size: 1.5rem; color: var(--ivory); margin-bottom: 0.5rem;">Meera Joshi</h3>
-                    <p class="mono-text text-dim">Head of Outreach</p>
-                </div>
-            </div>
         </section>
+
 
         <!-- Call to Action & Footer -->
         <section class="brutal-section" style="background: rgba(14, 21, 37, 0.9); border-top: 2px solid var(--border-color); text-align: center; padding: 6rem 2rem; position: relative;">
@@ -194,7 +273,7 @@
         </section>
 
         <footer class="footer mono-text" style="border-top: 2px solid var(--border-color); padding: 5rem 2rem 2rem 2rem; background: var(--deep-space); position: relative;">
-            <div class="container about-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); margin-bottom: 4rem; gap: 4rem;">
+            <div class="container about-grid" style="display: flex; flex-wrap: wrap; justify-content: center; margin-bottom: 4rem; gap: 4rem;">
                 <div>
                     <h3 class="brutal-text" style="font-size: 1.8rem; margin-bottom: 1rem; color: var(--ivory);">CAELYS</h3>
                     <p class="text-dim" style="line-height: 1.6;">Youth Summit<br>Jodhpur, 2027</p>
@@ -212,8 +291,9 @@
                 <div>
                     <h3 class="brutal-text" style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--ivory);">CONNECT</h3>
                     <p class="text-dim" style="line-height: 2;">
-                        <a href="#">@caelysyouthsummit</a><br>
-                        <a href="#">caelys.in</a>
+                        <a href="https://www.instagram.com/caelys.0206/" target="_blank" style="display: inline-flex; align-items: center; gap: 0.5rem;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>caelys.0206</a><br>
+                        <a href="https://www.linkedin.com/company/cael-youth-summitsd0206/" target="_blank" style="display: inline-flex; align-items: center; gap: 0.5rem;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>CAELYS</a><br>
+                        <a href="#" style="display: inline-flex; align-items: center; gap: 0.5rem;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>caelys.in</a>
                     </p>
                 </div>
             </div>
@@ -229,3 +309,9 @@
     <script type="module" src="/main.js"></script>
   </body>
 </html>
+
+
+
+
+
+

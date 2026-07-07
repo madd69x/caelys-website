@@ -61,7 +61,7 @@ camera.position.z = 18;
 
 const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5)); // Optimized for mobile
 renderer.setClearColor(colorDeepSpace, 0); // Transparent background to show HTML through
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
@@ -647,6 +647,10 @@ bottomHalf.add(bottomHandle);
 const pinGeo = new THREE.CylinderGeometry(0.15, 0.15, 0.3, 16);
 const pin = new THREE.Mesh(pinGeo, scissorMat);
 pin.rotation.x = Math.PI / 2;
+
+// Initial Open State
+topHalf.rotation.z = Math.PI / 8;
+bottomHalf.rotation.z = -Math.PI / 8;
 
 scissorGroup.add(topHalf);
 scissorGroup.add(bottomHalf);
@@ -1819,3 +1823,79 @@ window.addEventListener('scroll', function unlockAudio() {
     }
   } catch(e) {}
 }, { passive: true });
+
+// ==============================
+// MOBILE DROPDOWN MENU LOGIC
+// ==============================
+document.addEventListener('DOMContentLoaded', () => {
+  const header = document.querySelector('.brutal-header');
+  const existingNav = document.querySelector('.nav');
+  if (!header || !existingNav) return;
+
+  // 1. Create Hamburger Button
+  const menuBtn = document.createElement('button');
+  menuBtn.className = 'mobile-menu-btn mono-text';
+  menuBtn.innerHTML = '☰';
+  
+  // Insert before the nav to keep layout correct
+  header.insertBefore(menuBtn, existingNav);
+
+  // 2. Create Mobile Nav Panel
+  const panel = document.createElement('div');
+  panel.className = 'mobile-nav-panel';
+  
+  // Clone links from existing nav
+  panel.innerHTML = existingNav.innerHTML;
+  
+  document.body.appendChild(panel);
+
+  // 3. Toggle Logic
+  let menuOpen = false;
+  menuBtn.addEventListener('click', () => {
+    menuOpen = !menuOpen;
+    if (menuOpen) {
+      panel.classList.add('active');
+      menuBtn.innerHTML = '✕';
+      document.body.style.overflow = 'hidden'; // prevent scrolling
+    } else {
+      panel.classList.remove('active');
+      menuBtn.innerHTML = '☰';
+      document.body.style.overflow = '';
+    }
+  });
+
+  // Close menu on link click
+  const mobileLinks = panel.querySelectorAll('a');
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      menuOpen = false;
+      panel.classList.remove('active');
+      menuBtn.innerHTML = '☰';
+      document.body.style.overflow = '';
+    });
+  });
+});
+
+// Dynamic Cursor Magnetism
+document.addEventListener('DOMContentLoaded', () => {
+  const customCursor = document.getElementById('cursor');
+  if (!customCursor) return;
+  
+  const interactables = document.querySelectorAll('a, button, .brutal-card, .brutal-btn');
+  
+  interactables.forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      customCursor.style.transform = 'translate(-50%, -50%) scale(3)';
+      customCursor.style.backgroundColor = 'transparent';
+      customCursor.style.border = '2px solid var(--accent-color)';
+      customCursor.style.borderRadius = '50%';
+    });
+    
+    el.addEventListener('mouseleave', () => {
+      customCursor.style.transform = 'translate(-50%, -50%) scale(1)';
+      customCursor.style.backgroundColor = 'var(--accent-color)';
+      customCursor.style.border = '0 solid var(--accent-color)';
+      customCursor.style.borderRadius = '0';
+    });
+  });
+});

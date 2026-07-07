@@ -17,6 +17,8 @@
     </style>
   </head>
   <body>
+    <!-- Brutalist Noise Overlay -->
+    <div class="noise-overlay" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 9998; opacity: 0.04; background-image: url('data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E');"></div>
     <div id="global-loader">
       <div class="loader-bg"></div>
       <div class="loader-content">
@@ -60,13 +62,23 @@
             
             <div style="background: var(--slate-navy); border: 2px solid var(--border-color); padding: 3rem; margin-bottom: 3rem; position: relative;">
                 <p class="mono-text" style="font-size: 1.2rem; line-height: 1.8; margin-bottom: 2rem; color: var(--ivory);">
-                  CAELYS began with a simple frustration: why did the most intellectually ambitious students in Jodhpur have to leave the city to find the experiences they deserved?
+                  Some organisations are born from strategy. Some from opportunity. CAELYS was born from a feeling — quiet, persistent, and impossible to ignore — that the youth of this world deserve more than what currently exists.
                 </p>
                 <p class="mono-text" style="font-size: 1.2rem; line-height: 1.8; margin-bottom: 2rem; color: var(--pale-blue);">
-                  Disha Jariwala and Supriya Vishnoi, both veterans of the national MUN and debate circuit, decided to build the platform they wished had existed when they were starting out — one that was rigorous without being exclusionary, competitive without being toxic, and rooted in Jodhpur without being limited by it.
+                  It was during a series of long, honest conversations with Claude — an AI — that the shape of that feeling began to take form. Not just as an idea, but as a purpose. A platform. Something real.
                 </p>
-                <p class="mono-text" style="font-size: 1.2rem; line-height: 1.8; color: var(--ivory);">
-                  CAELYS 2027 is the result of over two years of planning, research, and an unshakeable belief that the next generation of Indian leaders are already in our schools and colleges — they just need the right room to walk into.
+                <p class="mono-text" style="font-size: 1.2rem; line-height: 1.8; margin-bottom: 2rem; color: var(--ivory);">
+                  Those conversations led to a phone call. Disha Vishal Jariwala called Supriya Vishnoi — not a colleague, not a connection, but her best friend. When Disha shared the vision, Supriya did not think twice.
+                </p>
+                <p class="mono-text" style="font-size: 1.2rem; line-height: 1.8; margin-bottom: 2rem; color: var(--pale-blue);">
+                  "Let's do it," she said. "For the students. For the youth of this world."<br>
+                  And just like that, CAELYS had two founders. And two best friends had found their shared purpose.
+                </p>
+                <p class="mono-text" style="font-size: 1.2rem; line-height: 1.8; margin-bottom: 2rem; color: var(--ivory);">
+                  But CAELYS did not stop there. One by one, people started showing up — young, passionate individuals who believed in the vision before it had a stage, a venue, or even a date. People who said yes before they had any reason to, simply because something about CAELYS felt worth building. It is their belief, their energy, and their commitment that transformed a conversation into an organisation.
+                </p>
+                <p class="mono-text" style="font-size: 1.2rem; line-height: 1.8; color: var(--accent-color); font-weight: 700;">
+                  That is how CAELYS began. Born from a feeling, built by friendship, and brought to life by the people who chose to show up. 🩵
                 </p>
             </div>
             
@@ -94,11 +106,11 @@
             <div class="about-grid">
                 <div class="about-card brutal-card">
                     <h2 class="display-small brutal-text">> OUR VISION</h2>
-                    <p class="mono-text mt-4 text-dim" style="font-size: 1.1rem; line-height: 1.6;">A Jodhpur where the most driven young minds have a world-class platform to engage, compete, and grow — without having to leave home to find it.</p>
+                    <p class="mono-text mt-4 text-dim" style="font-size: 1.1rem; line-height: 1.6;">A world where young people do not wait to grow up before they contribute to it. A world where curiosity is celebrated, where collaboration is the method, and where every young mind — regardless of their background, institution, or city — has access to a space that takes them seriously. CAELYS envisions a future where the gap between learning and doing, between thinking and building, between individual potential and collective impact, is closed by design. Not by chance.</p>
                 </div>
                 <div class="about-card brutal-card">
                     <h2 class="display-small brutal-text">> OUR MISSION</h2>
-                    <p class="mono-text mt-4 text-dim" style="font-size: 1.1rem; line-height: 1.6;">To design experiences — in diplomacy, rhetoric, and climate — that push students beyond performance into genuine understanding, and beyond understanding into action.</p>
+                    <p class="mono-text mt-4 text-dim" style="font-size: 1.1rem; line-height: 1.6;">CAELYS exists to create a platform where the youth of India — and one day the youth of the world — can come together to learn, debate, collaborate, and solve real problems that matter. Through meaningful experiences, structured verticals, and a culture built on genuine growth, CAELYS ensures that every person who walks through its doors leaves with more than a certificate. They leave transformed — as thinkers, communicators, leaders, and most importantly, as better human beings. 🩵</p>
                 </div>
             </div>
         </section>
@@ -106,7 +118,7 @@
         <!-- Core Philosophy -->
         <section class="brutal-section container" style="max-width: 1200px; margin: 0 auto; margin-bottom: 6rem;">
             <h2 class="display-large brutal-text text-center" style="margin-bottom: 3rem;">CORE PHILOSOPHY</h2>
-            <div class="about-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+            <div class="about-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem;">
                 <div class="about-card brutal-card">
                     <h3 class="brutal-text" style="font-size: 1.6rem; color: var(--ivory); margin-bottom: 0.5rem;">Intellectual Honesty</h3>
                     <p class="mono-text mt-2 text-dim" style="line-height: 1.6;">We believe in engaging with ideas on their merits — not just debating to win, but to understand.</p>
@@ -168,7 +180,7 @@
         </section>
 
         <footer class="footer mono-text" style="border-top: 2px solid var(--border-color); padding: 5rem 2rem 2rem 2rem; background: var(--deep-space); position: relative;">
-            <div class="container about-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); margin-bottom: 4rem; gap: 4rem;">
+            <div class="container about-grid" style="display: flex; flex-wrap: wrap; justify-content: center; margin-bottom: 4rem; gap: 4rem;">
                 <div>
                     <h3 class="brutal-text" style="font-size: 1.8rem; margin-bottom: 1rem; color: var(--ivory);">CAELYS</h3>
                     <p class="text-dim" style="line-height: 1.6;">Youth Summit<br>Jodhpur, 2027</p>
@@ -186,8 +198,9 @@
                 <div>
                     <h3 class="brutal-text" style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--ivory);">CONNECT</h3>
                     <p class="text-dim" style="line-height: 2;">
-                        <a href="#">@caelysyouthsummit</a><br>
-                        <a href="#">caelys.in</a>
+                        <a href="https://www.instagram.com/caelys.0206/" target="_blank" style="display: inline-flex; align-items: center; gap: 0.5rem;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>caelys.0206</a><br>
+                        <a href="https://www.linkedin.com/company/cael-youth-summitsd0206/" target="_blank" style="display: inline-flex; align-items: center; gap: 0.5rem;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>CAELYS</a><br>
+                        <a href="#" style="display: inline-flex; align-items: center; gap: 0.5rem;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>caelys.in</a>
                     </p>
                 </div>
             </div>
@@ -203,3 +216,8 @@
     <script type="module" src="/main.js"></script>
   </body>
 </html>
+
+
+
+
+
