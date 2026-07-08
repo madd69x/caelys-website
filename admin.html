@@ -70,22 +70,9 @@
       <!-- Stats injected here -->
     </div>
 
-    <table class="data-table">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Phone</th>
-          <th>Institution</th>
-          <th>Vertical</th>
-          <th>Timestamp</th>
-        </tr>
-      </thead>
-      <tbody id="table-body">
-        <!-- Rows injected here -->
-      </tbody>
-    </table>
+    <div id="tables-container">
+      <!-- Tables injected here -->
+    </div>
   </div>
   
   <script type="module">
@@ -100,23 +87,22 @@
       try {
         const tickets = await getRegistrations();
         const teamApps = await getTeamApplications();
-        // Combine them for the admin view
-        tickets.push(...teamApps);
+        const allCombined = [...tickets, ...teamApps];
         
-        const tbody = document.getElementById('table-body');
+        const tablesContainer = document.getElementById('tables-container');
         const stats = document.getElementById('stats');
         
         // Render Stats
-        const total = tickets.length;
+        const total = allCombined.length;
         const counts = {};
-        tickets.forEach(t => {
+        allCombined.forEach(t => {
           counts[t.vertical] = (counts[t.vertical] || 0) + 1;
         });
         
         let statsHtml = `
           <div class="stat-card">
             <div class="stat-num brutal-text">${total}</div>
-            <div class="mono-text text-dim">Total Tickets</div>
+            <div class="mono-text text-dim">Total Entries</div>
           </div>
         `;
         
@@ -130,22 +116,64 @@
         }
         stats.innerHTML = statsHtml;
         
-        // Render Table
-        tbody.innerHTML = tickets.reverse().map(t => `
-          <tr>
-            <td style="color: var(--accent-color); font-size: 0.8rem;">#${t.id.slice(-6)}</td>
-            <td><strong>${t.name}</strong></td>
-            <td>${t.email}</td>
-            <td>${t.phone || 'N/A'}</td>
-            <td>${t.institution}</td>
-            <td><span class="badge">${t.vertical}</span></td>
-            <td style="font-size: 0.8rem; color: var(--pale-blue);">${t.timestamp ? t.timestamp.toDate().toLocaleString() : 'Just now'}</td>
-          </tr>
-        `).join('');
+        // Render Tables
+        const verticals = ['Model United Nations', 'Debate & Rhetoric', 'Climate Conclave'];
+        
+        const renderTable = (title, data) => {
+            if (data.length === 0) return '';
+            const rows = data.reverse().map(t => `
+              <tr>
+                <td style="color: var(--accent-color); font-size: 0.8rem;">#${t.id.slice(-6)}</td>
+                <td><strong>${t.name}</strong></td>
+                <td>${t.email}</td>
+                <td>${t.phone || 'N/A'}</td>
+                <td>${t.institution}</td>
+                <td style="font-size: 0.8rem; color: var(--pale-blue);">${t.timestamp ? t.timestamp.toDate().toLocaleString() : 'Just now'}</td>
+              </tr>
+            `).join('');
+
+            return `
+            <h2 class="display-large brutal-text" style="color: var(--ivory); font-size: 2rem; margin-top: 4rem; margin-bottom: 1rem; border-bottom: 2px solid var(--border-color); padding-bottom: 1rem;">${title.toUpperCase()}</h2>
+            <div style="overflow-x: auto;">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Institution</th>
+                    <th>Timestamp</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${rows}
+                </tbody>
+              </table>
+            </div>
+            `;
+        };
+
+        let fullHtml = '';
+        verticals.forEach(v => {
+            const verticalTickets = tickets.filter(t => t.vertical === v);
+            fullHtml += renderTable(`Delegate Registrations - ${v}`, verticalTickets);
+        });
+
+        verticals.forEach(v => {
+            const verticalTeamApps = teamApps.filter(t => t.vertical === v);
+            fullHtml += renderTable(`Team Applications - ${v}`, verticalTeamApps);
+        });
+        
+        if (fullHtml === '') {
+            fullHtml = '<p class="mono-text text-dim" style="text-align: center; margin-top: 4rem;">No entries found in the database.</p>';
+        }
+
+        tablesContainer.innerHTML = fullHtml;
         
       } catch (e) {
         console.error(e);
-        document.getElementById('table-body').innerHTML = '<tr><td colspan="6" style="text-align:center; color: red;">ERROR: COULD NOT CONNECT TO BACKEND DATABASE. IS SERVER.CJS RUNNING?</td></tr>';
+        document.getElementById('tables-container').innerHTML = '<p style="text-align:center; color: red;">ERROR: COULD NOT CONNECT TO BACKEND DATABASE.</p>';
       }
     }
     
