@@ -918,6 +918,8 @@ a, button, .register-card, .brutal-btn, input, textarea, select {
     border: 2px solid var(--periwinkle);
     color: var(--ivory);
     z-index: 9990;
+    pointer-events: auto;
+    cursor: none !important;
     display: flex;
     align-items: center;
     justify-content: center;

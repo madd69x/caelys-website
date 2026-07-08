@@ -2026,22 +2026,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    audioToggle.addEventListener('click', () => {
-        const isMuted = audioToggle.classList.contains('muted');
-        if (isMuted) {
-            audioToggle.classList.remove('muted');
-            audioToggle.innerHTML = '&#128266;'; // Speaker on
-            initAudioContext();
-            globalAudioCtx.resume().then(() => {
-                startAmbientDrone();
-                playGlobalSound('startup');
-            });
-        } else {
-            audioToggle.classList.add('muted');
-            audioToggle.innerHTML = '&#128263;'; // Muted
-            stopAmbientDrone();
-        }
-    });
+
 });
 // 5. Autoplay Audio & Better Button Icon
 document.addEventListener('DOMContentLoaded', () => {
