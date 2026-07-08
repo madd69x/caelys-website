@@ -139,7 +139,7 @@
             <td>${t.phone || 'N/A'}</td>
             <td>${t.institution}</td>
             <td><span class="badge">${t.vertical}</span></td>
-            <td style="font-size: 0.8rem; color: var(--pale-blue);">${new Date(t.timestamp).toLocaleString()}</td>
+            <td style="font-size: 0.8rem; color: var(--pale-blue);">${t.timestamp ? t.timestamp.toDate().toLocaleString() : 'Just now'}</td>
           </tr>
         `).join('');
         
@@ -154,6 +154,7 @@
   </script>
 </body>
 </html>
+
 
 
 

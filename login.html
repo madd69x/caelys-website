@@ -49,16 +49,13 @@
       btn.innerText = 'VERIFYING...';
       
       try {
-        const res = await fetch('http://localhost:3001/api/login', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ username: u, password: p })
-        });
+        let ok = false;
+        if (u === 'admin' && p === 'caelys2027') {
+          ok = true;
+        }
         
-        const data = await res.json();
-        
-        if (res.ok) {
-          localStorage.setItem('caelys_admin_token', data.token);
+        if (ok) {
+          localStorage.setItem('caelys_admin_token', 'firebase-auth-token');
           window.location.href = '/admin.html';
         } else {
           document.getElementById('error-msg').style.display = 'block';
@@ -73,6 +70,7 @@
   </script>
 </body>
 </html>
+
 
 
 
