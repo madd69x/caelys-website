@@ -1906,9 +1906,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Inject Elements
-    const noise = document.createElement('div');
-    noise.className = 'noise-overlay';
-    document.body.appendChild(noise);
 
     const cursorDot = document.createElement('div');
     cursorDot.className = 'custom-cursor-dot';
