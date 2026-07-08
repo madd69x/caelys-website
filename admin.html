@@ -88,7 +88,8 @@
     </table>
   </div>
   
-  <script>
+  <script type="module">
+    import { getRegistrations, getTeamApplications } from "/firebase-db.js";
     async function loadTickets() {
       const token = localStorage.getItem('caelys_admin_token');
       if (!token) {
@@ -97,17 +98,10 @@
       }
       
       try {
-        const res = await fetch('http://localhost:3001/api/tickets', {
-          headers: { 'Authorization': token }
-        });
-        
-        if (res.status === 401) {
-          localStorage.removeItem('caelys_admin_token');
-          window.location.href = '/login.html';
-          return;
-        }
-        
-        const tickets = await res.json();
+        const tickets = await getRegistrations();
+        const teamApps = await getTeamApplications();
+        // Combine them for the admin view
+        tickets.push(...teamApps);
         
         const tbody = document.getElementById('table-body');
         const stats = document.getElementById('stats');
@@ -160,6 +154,7 @@
   </script>
 </body>
 </html>
+
 
 
 

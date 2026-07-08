@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CAELYS Research | Register</title>
+    <title>CAELYS Research | Join Team</title>|<title>CAELYS Research | Join Team</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -265,7 +265,7 @@
     <!-- Scripts -->
     <script type="module" src="/main.js"></script>
     <script type="module">
-        import { submitRegistration } from "/firebase-db.js";
+        import { submitTeamApplication } from "/firebase-db.js";
         const form = document.getElementById('registration-form');
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -280,7 +280,7 @@
             const vertical = document.getElementById('selected-vertical-name').innerText;
             
             try {
-                const response = await submitRegistration({ name, email, phone, vertical, institution });
+                const response = await submitTeamApplication({ name, email, phone, vertical: vertical, institution });
                 
                 if (response.success) {
                     form.innerHTML = '<h2 class="display-large brutal-text" style="color: var(--accent-color); text-align: center; width: 100%;">TICKET SECURED ✓</h2><p class="mono-text text-dim" style="text-align: center; margin-top: 2rem; font-size: 1.2rem;">Your registration has been recorded in the CAELYS system.</p>';
@@ -299,6 +299,7 @@
     </script>
   </body>
 </html>
+
 
 
 

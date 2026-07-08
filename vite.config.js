@@ -13,6 +13,7 @@ export default defineConfig({
         privacy: resolve(__dirname, 'privacy.html'),
         register: resolve(__dirname, 'register.html'),
         team: resolve(__dirname, 'team.html'),
+        join: resolve(__dirname, 'join.html'),
         team_new: resolve(__dirname, 'team_new.html'),
         terms: resolve(__dirname, 'terms.html'),
         verticals: resolve(__dirname, 'verticals.html')
@@ -24,3 +25,4 @@ export default defineConfig({
     allowedHosts: true
   }
 });
+
