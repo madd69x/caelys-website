@@ -1835,7 +1835,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // 1. Create Hamburger Button
   const menuBtn = document.createElement('button');
   menuBtn.className = 'mobile-menu-btn mono-text';
-  menuBtn.innerHTML = '☰';
+  menuBtn.innerHTML = '&#9776;'; // Hamburger icon
   
   // Insert before the nav to keep layout correct
   header.insertBefore(menuBtn, existingNav);
@@ -1855,11 +1855,11 @@ document.addEventListener('DOMContentLoaded', () => {
     menuOpen = !menuOpen;
     if (menuOpen) {
       panel.classList.add('active');
-      menuBtn.innerHTML = '✕';
+      menuBtn.innerHTML = '&#10005;'; // Cross icon
       document.body.style.overflow = 'hidden'; // prevent scrolling
     } else {
       panel.classList.remove('active');
-      menuBtn.innerHTML = '☰';
+      menuBtn.innerHTML = '&#9776;'; // Hamburger icon
       document.body.style.overflow = '';
     }
   });
@@ -1870,7 +1870,7 @@ document.addEventListener('DOMContentLoaded', () => {
     link.addEventListener('click', () => {
       menuOpen = false;
       panel.classList.remove('active');
-      menuBtn.innerHTML = '☰';
+      menuBtn.innerHTML = '&#9776;'; // Hamburger icon
       document.body.style.overflow = '';
     });
   });
