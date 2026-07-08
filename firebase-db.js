@@ -15,10 +15,17 @@ const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 
 export function getCollectionName(vertical, type) {
-    let suffix = 'mun';
-    if (vertical.includes('Debate')) suffix = 'debate';
-    if (vertical.includes('Climate')) suffix = 'climate';
-    return type === 'delegate' ? `registrations_${suffix}` : `team_${suffix}`;
+    if (type === 'team') {
+        let suffix = 'design';
+        if (vertical.includes('Operations')) suffix = 'operations';
+        if (vertical.includes('Outreach')) suffix = 'outreach';
+        return `team_${suffix}`;
+    } else {
+        let suffix = 'mun';
+        if (vertical.includes('Debate')) suffix = 'debate';
+        if (vertical.includes('Climate')) suffix = 'climate';
+        return `registrations_${suffix}`;
+    }
 }
 
 export async function submitRegistration(data) {
