@@ -38,13 +38,13 @@ export default async function handler(req, res) {
 
     if (type === 'delegate') {
     subject = 'CAELYS 2027 Registration Confirmed';
-    text = "Dear ${name},\n\nYour registration for CAELYS 2027 (${vertical}) has been successfully received.\n\nWe look forward to seeing you in Jodhpur!\n\nBest,\nThe CAELYS Team";
+    text = `Dear ${name},\n\nYour registration for CAELYS 2027 (${vertical}) has been successfully received.\n\nWe look forward to seeing you in Jodhpur!\n\nBest,\nThe CAELYS Team`;
   } else if (type === 'team') {
     subject = 'CAELYS 2027 Team Application Received';
-    text = "Dear ${name},\n\nThank you for applying to join the CAELYS 2027 Secretariat in the ${vertical} department.\n\nWe have received your application and our core team will review it shortly. We will reach out to you if your profile matches our requirements.\n\nBest,\nThe CAELYS Team";
+    text = `Dear ${name},\n\nThank you for applying to join the CAELYS 2027 Secretariat in the ${vertical} department.\n\nWe have received your application and our core team will review it shortly. We will reach out to you if your profile matches our requirements.\n\nBest,\nThe CAELYS Team`;
   } else if (type === 'otp') {
     subject = 'CAELYS 2027 Verification Code';
-    text = "Your CAELYS 2027 Verification Code is: ${code}\n\nPlease enter this code on the registration page to complete your application. This code will expire in 10 minutes.\n\nBest,\nThe CAELYS Team";
+    text = `Your CAELYS 2027 Verification Code is: ${code}\n\nPlease enter this code on the registration page to complete your application. This code will expire in 10 minutes.\n\nBest,\nThe CAELYS Team`;
   } else {
     return res.status(400).json({ message: 'Invalid registration type.' });
   }

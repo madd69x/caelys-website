@@ -12,7 +12,7 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+export const db = getFirestore(app);
 
 export async function submitRegistration(data) {
   try {
@@ -98,3 +98,4 @@ export async function checkEmailExists(email, type) {
     return true; // fail safe
   }
 }
+
