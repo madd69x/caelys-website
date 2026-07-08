@@ -6,7 +6,16 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        team_new: '', privacy: '', register: '', team: '', admin: '', verticals: '', index: '', terms: '', about: '', login: ''
+        index: resolve(__dirname, 'index.html'),
+        about: resolve(__dirname, 'about.html'),
+        admin: resolve(__dirname, 'admin.html'),
+        login: resolve(__dirname, 'login.html'),
+        privacy: resolve(__dirname, 'privacy.html'),
+        register: resolve(__dirname, 'register.html'),
+        team: resolve(__dirname, 'team.html'),
+        team_new: resolve(__dirname, 'team_new.html'),
+        terms: resolve(__dirname, 'terms.html'),
+        verticals: resolve(__dirname, 'verticals.html')
       }
     }
   },
