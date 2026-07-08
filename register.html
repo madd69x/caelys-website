@@ -265,12 +265,29 @@
     <!-- Scripts -->
     <script type="module" src="/main.js"></script>
     <script type="module">
-        import { submitRegistration } from "/firebase-db.js";
+        import { submitRegistration, checkEmailExists } from "/firebase-db.js";
         const form = document.getElementById('registration-form');
+        
+        // OTP UI elements to inject
+        const otpContainer = document.createElement('div');
+        otpContainer.id = 'otp-container';
+        otpContainer.style.display = 'none';
+        otpContainer.style.textAlign = 'center';
+        otpContainer.innerHTML = `
+            <h2 class="display-large brutal-text" style="color: var(--accent-color); margin-bottom: 2rem;">VERIFY EMAIL</h2>
+            <p class="mono-text text-dim" style="margin-bottom: 2rem;">We sent a 6-digit code to your email. Enter it below to confirm your registration.</p>
+            <input type="text" id="otp-input" class="brutal-input" placeholder="123456" style="max-width: 300px; margin: 0 auto 2rem auto; text-align: center; letter-spacing: 0.5rem; font-size: 2rem;" maxlength="6">
+            <button id="verify-btn" class="brutal-btn mono-text" style="padding: 1rem 3rem;">VERIFY & SECURE TICKET</button>
+        `;
+        form.parentNode.insertBefore(otpContainer, form.nextSibling);
+
+        let generatedOtp = '';
+        let pendingData = null;
+
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
             const btn = form.querySelector('button[type="submit"]');
-            btn.innerText = 'PROCESSING...';
+            btn.innerText = 'CHECKING...';
             btn.style.opacity = '0.5';
             
             const name = document.getElementById('form-name').value;
@@ -280,25 +297,66 @@
             const vertical = document.getElementById('selected-vertical-name').innerText;
             
             try {
-                const response = await submitRegistration({ name, email, phone, vertical, institution });
-                
-                if (response.success) {
-                    fetch('/api/send-email', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ type: 'delegate', email, name, vertical }) }).catch(console.error);
-                    form.innerHTML = '<h2 class="display-large brutal-text" style="color: var(--accent-color); text-align: center; width: 100%;">TICKET SECURED ✓</h2><p class="mono-text text-dim" style="text-align: center; margin-top: 2rem; font-size: 1.2rem;">Your registration has been recorded in the CAELYS system.</p>';
-                } else {
-                    if (response.error === 'EMAIL_EXISTS') {
-                        alert('This email is already registered!');
-                    } else {
-                        alert('Registration failed. Please try again.');
-                    }
+                // 1. Check if email exists
+                const exists = await checkEmailExists(email, 'delegate');
+                if (exists) {
+                    alert('This email is already registered!');
                     btn.innerText = 'Submit Registration →';
                     btn.style.opacity = '1';
+                    return;
                 }
+
+                // 2. Generate and Send OTP
+                btn.innerText = 'SENDING OTP...';
+                generatedOtp = Math.floor(100000 + Math.random() * 900000).toString();
+                pendingData = { name, email, phone, vertical, institution };
+
+                const mailRes = await fetch('/api/send-email', { 
+                    method: 'POST', 
+                    headers: { 'Content-Type': 'application/json' }, 
+                    body: JSON.stringify({ type: 'otp', email, name, code: generatedOtp }) 
+                });
+
+                if (!mailRes.ok) throw new Error('Failed to send OTP email');
+
+                // 3. Show OTP UI
+                form.style.display = 'none';
+                otpContainer.style.display = 'block';
+
             } catch (err) {
                 console.error(err);
-                alert('Server connection failed. Is the backend running?');
+                alert('Server connection failed. Could not send OTP.');
                 btn.innerText = 'Submit Registration →';
                 btn.style.opacity = '1';
+            }
+        });
+
+        document.getElementById('verify-btn').addEventListener('click', async () => {
+            const input = document.getElementById('otp-input').value;
+            const vbtn = document.getElementById('verify-btn');
+            
+            if (input === generatedOtp) {
+                vbtn.innerText = 'SECURING TICKET...';
+                vbtn.style.opacity = '0.5';
+                
+                // Final Submit
+                const response = await submitRegistration(pendingData);
+                if (response.success) {
+                    // Send Welcome Email
+                    fetch('/api/send-email', { 
+                        method: 'POST', 
+                        headers: { 'Content-Type': 'application/json' }, 
+                        body: JSON.stringify({ type: 'delegate', email: pendingData.email, name: pendingData.name, vertical: pendingData.vertical }) 
+                    }).catch(console.error);
+
+                    otpContainer.innerHTML = '<h2 class="display-large brutal-text" style="color: var(--accent-color); text-align: center; width: 100%;">TICKET SECURED ✓</h2><p class="mono-text text-dim" style="text-align: center; margin-top: 2rem; font-size: 1.2rem;">Your registration has been verified and recorded.</p>';
+                } else {
+                    alert('Registration failed. Please try again.');
+                    vbtn.innerText = 'VERIFY & SECURE TICKET';
+                    vbtn.style.opacity = '1';
+                }
+            } else {
+                alert('Invalid Verification Code!');
             }
         });
     </script>

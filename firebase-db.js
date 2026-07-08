@@ -86,3 +86,15 @@ export async function getTeamApplications() {
   }
 }
 
+
+export async function checkEmailExists(email, type) {
+  try {
+    const collectionName = type === 'delegate' ? "registrations" : "team_applications";
+    const q = query(collection(db, collectionName), where("email", "==", email));
+    const snapshot = await getDocs(q);
+    return !snapshot.empty;
+  } catch (e) {
+    console.error("Error checking email: ", e);
+    return true; // fail safe
+  }
+}

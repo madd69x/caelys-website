@@ -1,4 +1,4 @@
-import"./modulepreload-polyfill-Dezn_h7o.js";/* empty css              */import{n as e,t}from"./firebase-db-BsdMy0SF.js";async function n(){if(!localStorage.getItem(`caelys_admin_token`)){window.location.href=`/login.html`;return}try{let n=await t(),r=await e();n.push(...r);let i=document.getElementById(`table-body`),a=document.getElementById(`stats`),o=n.length,s={};n.forEach(e=>{s[e.vertical]=(s[e.vertical]||0)+1});let c=`
+import"./modulepreload-polyfill-Dezn_h7o.js";/* empty css              */import{n as e,r as t}from"./firebase-db-V32IiDTQ.js";async function n(){if(!localStorage.getItem(`caelys_admin_token`)){window.location.href=`/login.html`;return}try{let n=await e(),r=await t();n.push(...r);let i=document.getElementById(`table-body`),a=document.getElementById(`stats`),o=n.length,s={};n.forEach(e=>{s[e.vertical]=(s[e.vertical]||0)+1});let c=`
           <div class="stat-card">
             <div class="stat-num brutal-text">${o}</div>
             <div class="mono-text text-dim">Total Tickets</div>
