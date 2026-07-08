@@ -107,7 +107,7 @@
         </section>
 
         <!-- Vertical Selection Grid -->
-        <section class="brutal-section container" style="max-width: 1200px; margin: 0 auto; margin-bottom: 6rem;">
+        <section id="vertical-section" class="brutal-section container" style="max-width: 1200px; margin: 0 auto; margin-bottom: 6rem;">
             <h3 class="mono-text" style="color: var(--ivory); font-size: 1.2rem; margin-bottom: 2rem; text-align: center;">Select your vertical to register</h3>
             
             <div class="about-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem;">
@@ -137,7 +137,7 @@
         </section>
 
         <!-- Registration Form -->
-        <section class="brutal-section container" style="max-width: 1000px; margin: 0 auto; margin-bottom: 8rem;">
+        <section id="form-section" class="brutal-section container" style="max-width: 1000px; margin: 0 auto; margin-bottom: 8rem;">
             <div style="background: rgba(14, 21, 37, 0.7); border: 2px solid var(--border-color); padding: 4rem; backdrop-filter: blur(10px);">
                 
                 <h3 class="mono-text text-dim" style="margin-bottom: 0.5rem; font-size: 1.2rem;">Registering for</h3>
@@ -272,8 +272,12 @@
         const formContainer = document.querySelector('.brutal-section');
 
         if (new Date() < summitDate) {
-            if (verticalSelection) verticalSelection.style.display = 'none';
+            const vSec = document.getElementById('vertical-section');
+            const fSec = document.getElementById('form-section');
+            if (vSec) vSec.style.display = 'none';
+            if (fSec) fSec.style.display = 'none';
             if (form) form.style.display = 'none';
+            if (verticalSelection) verticalSelection.style.display = 'none';
             
             const message = document.createElement('div');
             message.style.textAlign = 'center';
