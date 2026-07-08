@@ -1,9 +1,17 @@
 import { defineConfig } from 'vite';
+import { resolve } from 'path';
 
 export default defineConfig({
-  base: './', // Ensures relative paths for assets on GitHub Pages
+  base: '/',
+  build: {
+    rollupOptions: {
+      input: {
+        team_new: '', privacy: '', register: '', team: '', admin: '', verticals: '', index: '', terms: '', about: '', login: ''
+      }
+    }
+  },
   server: {
-    host: true, // Listen on all local IPs
-    allowedHosts: true // Allow all host headers (solves localtunnel issues)
+    host: true,
+    allowedHosts: true
   }
 });
