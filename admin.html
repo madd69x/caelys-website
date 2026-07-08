@@ -102,6 +102,7 @@
             allCombined.push(...data);
             
             if (data.length > 0) {
+                const isTeam = col.name.startsWith('team_');
                 const rows = data.map(t => `
                   <tr>
                     <td style="color: var(--accent-color); font-size: 0.8rem;">#${t.id.slice(-6)}</td>
@@ -111,6 +112,13 @@
                     <td>${t.institution}</td>
                     <td style="font-size: 0.8rem; color: var(--pale-blue);">${t.timestamp ? t.timestamp.toDate().toLocaleString() : 'Just now'}</td>
                   </tr>
+                  ${isTeam ? `
+                  <tr>
+                    <td colspan="6" style="padding: 1rem 1.5rem; background: rgba(0,0,0,0.3); border-left: 3px solid var(--periwinkle); color: var(--ivory); font-size: 0.9rem;">
+                        <strong style="color: var(--pale-blue);">Application Reason:</strong><br>
+                        <div style="margin-top: 0.5rem; white-space: pre-wrap; font-style: italic;">"${t.reason || 'No reason provided.'}"</div>
+                    </td>
+                  </tr>` : ''}
                 `).join('');
 
                 fullHtml += `
