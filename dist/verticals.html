@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CAELYS Research | Verticals</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+      .text-dim { color: var(--pale-blue); }
+      .text-center { text-align: center; }
+      footer a { color: var(--pale-blue); text-decoration: none; transition: color 0.2s; }
+      footer a:hover { color: var(--accent-color); }
+      .brutal-img { width: 100%; border: 4px solid var(--border-color); margin-bottom: 3rem; opacity: 0.9; filter: contrast(1.1); box-shadow: 10px 10px 0 var(--accent-color); }
+    </style>
+    <script type="module" crossorigin src="/assets/modulepreload-polyfill-Dezn_h7o.js"></script>
+    <script type="module" crossorigin src="/assets/main-BwIjHfT7.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/style-CTsYHIFB.css">
+  </head>
+  <body>
+    <!-- Brutalist Noise Overlay -->
+    <div class="noise-overlay" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 9998; opacity: 0.04; background-image: url('data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(&quot;%23noiseFilter&quot;)'/%3E%3C/svg%3E');"></div>
+    <div id="global-loader">
+      <div class="loader-bg"></div>
+      <div class="loader-content">
+        <h1 class="loader-text brutal-text" id="loader-text">INITIALIZING</h1>
+        <div class="loader-bar-container"><div class="loader-bar" id="loader-bar"></div></div>
+        <button id="enter-experience-btn" class="brutal-btn" style="display: none; margin: 2rem auto 0; font-size: 1.5rem; padding: 1rem 3rem;">[ ENTER CAELYS ]</button>
+      </div>
+    </div>
+    <div id="flash-overlay"></div>
+    <div class="cursor" id="cursor"></div>
+    <canvas id="webgl-canvas"></canvas>
+
+    <div id="ui-layer">
+      <!-- Header / Nav -->
+      <header class="header brutal-header">
+        <div class="logo-box">
+          <a href="/"><div class="logo-icon brutalist-logo"></div></a>
+        </div>
+        <nav class="nav mono-text">
+          <a href="/">[ HOME ]</a>
+          <a href="/about.html">[ ABOUT ]</a>
+          <a href="/verticals.html">[ VERTICALS ]</a>
+          <a href="/team.html">[ TEAM ]</a>
+          <a href="/register.html">[ REGISTER ]</a>
+          <a href="/admin.html">[ ADMIN ]</a>
+        </nav>
+      </header>
+
+      <main class="content" style="padding-top: 150px;">
+        
+        <!-- Hero Section -->
+        <section class="brutal-section container" style="max-width: 1000px; margin: 0 auto; margin-bottom: 6rem; text-align: center;">
+            <h1 class="display-title brutal-text" style="line-height: 0.9; margin-bottom: 2rem; font-size: clamp(3rem, 6vw, 6rem);">THREE WAYS TO THINK.<br><span style="color: var(--accent-color);">ONE PURPOSE.</span></h1>
+            <p class="mono-text text-dim" style="font-size: 1.3rem; line-height: 1.8; max-width: 800px; margin: 0 auto 4rem auto;">
+              CAELYS brings three distinct intellectual verticals under one roof — each rigorous, each transformative, each yours to choose.
+            </p>
+            
+            <div class="about-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem;">
+                <div class="about-card brutal-card" style="border-color: var(--accent-color);">
+                    <h3 class="brutal-text" style="font-size: 1.5rem; color: var(--ivory); margin-bottom: 0.5rem;">Model UN</h3>
+                    <p class="mono-text text-dim" style="margin-bottom: 1.5rem;">Diplomacy & Global Policy</p>
+                    <a href="#mun" class="brutal-btn mono-text" style="align-self: stretch; text-align: center; padding: 0.8rem; text-decoration: none;">Explore</a>
+                </div>
+                <div class="about-card brutal-card" style="border-color: var(--ivory);">
+                    <h3 class="brutal-text" style="font-size: 1.5rem; color: var(--ivory); margin-bottom: 0.5rem;">Debate & Rhetoric</h3>
+                    <p class="mono-text text-dim" style="margin-bottom: 1.5rem;">Argumentation & Persuasion</p>
+                    <a href="#debate" class="brutal-btn mono-text" style="align-self: stretch; text-align: center; padding: 0.8rem; text-decoration: none;">Explore</a>
+                </div>
+                <div class="about-card brutal-card" style="border-color: var(--pale-blue);">
+                    <h3 class="brutal-text" style="font-size: 1.5rem; color: var(--ivory); margin-bottom: 0.5rem;">Climate Conclave</h3>
+                    <p class="mono-text text-dim" style="margin-bottom: 1.5rem;">Science, Policy & Action</p>
+                    <a href="#climate" class="brutal-btn mono-text" style="align-self: stretch; text-align: center; padding: 0.8rem; text-decoration: none;">Explore</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Vertical 01: MUN -->
+        <section id="mun" class="brutal-section container" style="max-width: 1000px; margin: 0 auto; margin-bottom: 6rem; padding-top: 4rem;">
+            <div style="margin-bottom: 2rem;">
+                <h3 class="mono-text text-dim">> VERTICAL 01</h3>
+                <h2 class="display-large brutal-text" style="color: var(--ivory);">MODEL UNITED NATIONS</h2>
+            </div>
+            
+            <img src="/images/mun.jpg" alt="MUN Conference Hall" class="brutal-img">
+
+            <div style="background: var(--slate-navy); border: 2px solid var(--border-color); padding: 3rem; margin-bottom: 3rem;">
+                <p class="mono-text text-dim" style="font-size: 1.2rem; line-height: 1.8; margin-bottom: 2rem;">
+                  Step into the chambers of global diplomacy. At CAELYS MUN, you don't just play a role — you inhabit one. Represent nations, navigate geopolitical tensions, and negotiate resolutions that reflect the complexity of the real world.
+                </p>
+                <p class="mono-text text-dim" style="font-size: 1.2rem; line-height: 1.8;">
+                  Committees are crafted with care — every agenda is chosen for its relevance, depth, and potential for genuine debate. Directors are trained to facilitate, not dominate. The room is yours to run.
+                </p>
+            </div>
+
+            <h3 class="brutal-text" style="font-size: 2rem; color: var(--accent-color); margin-bottom: 1.5rem;">Format</h3>
+            <ul class="mono-text text-dim" style="font-size: 1.1rem; line-height: 2; margin-bottom: 3rem; list-style-type: square; padding-left: 2rem;">
+                <li>Two-day committee sessions</li>
+                <li>Western format with formal and informal caucuses</li>
+                <li>Position papers required for all delegates</li>
+                <li>Draft resolution writing and voting procedure</li>
+            </ul>
+
+            <h3 class="brutal-text" style="font-size: 2rem; color: var(--accent-color); margin-bottom: 1.5rem;">Committees</h3>
+            <div class="about-grid" style="display: flex; flex-wrap: wrap; justify-content: center; margin-bottom: 3rem;">
+                <div class="about-card brutal-card">
+                    <h2 class="display-large brutal-text" style="font-size: 2.5rem; margin-bottom: 0.5rem; color: var(--ivory);">UNSC</h2>
+                    <p class="mono-text text-dim" style="font-weight: bold; margin-bottom: 1rem;">UN Security Council</p>
+                    <p class="mono-text" style="color: var(--pale-blue); font-size: 0.9rem;">Redefining the Veto: Reforming UNSC in the Era of Multipolar Power</p>
+                </div>
+                <div class="about-card brutal-card">
+                    <h2 class="display-large brutal-text" style="font-size: 2.5rem; margin-bottom: 0.5rem; color: var(--ivory);">UNGA</h2>
+                    <p class="mono-text text-dim" style="font-weight: bold; margin-bottom: 1rem;">UN General Assembly</p>
+                    <p class="mono-text" style="color: var(--pale-blue); font-size: 0.9rem;">AI Governance and Digital Sovereignty in Developing Nations</p>
+                </div>
+                <div class="about-card brutal-card">
+                    <h2 class="display-large brutal-text" style="font-size: 2.5rem; margin-bottom: 0.5rem; color: var(--ivory);">WHO</h2>
+                    <p class="mono-text text-dim" style="font-weight: bold; margin-bottom: 1rem;">World Health Org</p>
+                    <p class="mono-text" style="color: var(--pale-blue); font-size: 0.9rem;">Pandemic Preparedness: Equitable Access to Vaccines in Low-Income Countries</p>
+                </div>
+                <div class="about-card brutal-card">
+                    <h2 class="display-large brutal-text" style="font-size: 2.5rem; margin-bottom: 0.5rem; color: var(--ivory);">ECOSOC</h2>
+                    <p class="mono-text text-dim" style="font-weight: bold; margin-bottom: 1rem;">Economic & Social Council</p>
+                    <p class="mono-text" style="color: var(--pale-blue); font-size: 0.9rem;">Financing the SDGs: Innovative Mechanisms for Developing Economies</p>
+                </div>
+            </div>
+            
+            <p class="mono-text" style="color: var(--ivory); font-style: italic; margin-bottom: 2rem;">Best Delegate, Best Position Paper, High Commendation awarded</p>
+            <a href="/#register" class="brutal-btn mono-text" style="display: inline-block; padding: 1rem 3rem; text-decoration: none;">Register for MUN</a>
+        </section>
+
+        <!-- Vertical 02: Debate & Rhetoric -->
+        <section id="debate" class="brutal-section container" style="max-width: 1000px; margin: 0 auto; margin-bottom: 6rem; padding-top: 4rem;">
+            <div style="margin-bottom: 2rem;">
+                <h3 class="mono-text text-dim">> VERTICAL 02</h3>
+                <h2 class="display-large brutal-text" style="color: var(--ivory);">DEBATE & RHETORIC</h2>
+            </div>
+            
+            <img src="/images/debate.jpg" alt="Youth debate on stage" class="brutal-img">
+
+            <div style="background: var(--slate-navy); border: 2px solid var(--border-color); padding: 3rem; margin-bottom: 3rem;">
+                <p class="mono-text text-dim" style="font-size: 1.2rem; line-height: 1.8; margin-bottom: 2rem;">
+                  Words have power. CAELYS Debate is where you learn to wield them precisely. Built on the Asian Parliamentary (AP) format, the tournament demands logic, evidence, wit, and composure in equal measure.
+                </p>
+                <p class="mono-text text-dim" style="font-size: 1.2rem; line-height: 1.8;">
+                  Whether you come as a seasoned debater or a first-timer with fire in your gut, you will be challenged, coached, and transformed over two days of structured competition.
+                </p>
+            </div>
+
+            <h3 class="brutal-text" style="font-size: 2rem; color: var(--accent-color); margin-bottom: 1.5rem;">Tournament Structure</h3>
+            <div class="about-grid" style="grid-template-columns: 1fr 1fr; margin-bottom: 2rem;">
+                <div class="about-card brutal-card">
+                    <h3 class="brutal-text" style="font-size: 1.5rem; color: var(--ivory); margin-bottom: 1rem;">Day 1</h3>
+                    <ul class="mono-text text-dim" style="line-height: 1.8; padding-left: 1.5rem;">
+                        <li>AP format — teams of 3</li>
+                        <li>Preliminary rounds (4 rounds)</li>
+                        <li>Impromptu motion disclosure</li>
+                        <li>Feedback after each round</li>
+                    </ul>
+                </div>
+                <div class="about-card brutal-card">
+                    <h3 class="brutal-text" style="font-size: 1.5rem; color: var(--ivory); margin-bottom: 1rem;">Day 2</h3>
+                    <ul class="mono-text text-dim" style="line-height: 1.8; padding-left: 1.5rem;">
+                        <li>Quarter & semi-finals</li>
+                        <li>Grand Final — open audience</li>
+                        <li>Best Debater adjudication</li>
+                        <li>Awards ceremony</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <p class="mono-text text-dim" style="margin-bottom: 2rem;">AP requires teams of 3. Register as a team or as an individual — we will match solo participants into teams before the event.</p>
+            <p class="mono-text" style="color: var(--ivory); font-style: italic; margin-bottom: 2rem;">Best Debater, Best Speaker, Best Team awarded</p>
+            
+            <a href="/#register" class="brutal-btn mono-text" style="display: inline-block; padding: 1rem 3rem; text-decoration: none;">Register for Debate</a>
+        </section>
+
+        <!-- Vertical 03: Climate Conclave -->
+        <section id="climate" class="brutal-section container" style="max-width: 1000px; margin: 0 auto; margin-bottom: 6rem; padding-top: 4rem;">
+            <div style="margin-bottom: 2rem;">
+                <h3 class="mono-text text-dim">> VERTICAL 03</h3>
+                <h2 class="display-large brutal-text" style="color: var(--ivory);">CLIMATE CONCLAVE</h2>
+            </div>
+            
+            <img src="/images/climate.jpg" alt="Climate summit protest" class="brutal-img">
+
+            <div style="background: var(--slate-navy); border: 2px solid var(--border-color); padding: 3rem; margin-bottom: 3rem;">
+                <p class="mono-text text-dim" style="font-size: 1.2rem; line-height: 1.8; margin-bottom: 2rem;">
+                  The Climate Conclave is not a debate about whether the climate crisis is real. It is a room of people who know it is, and are working to figure out what to do next. Science, policy, technology, and community — four working groups, one shared urgency.
+                </p>
+                <p class="mono-text text-dim" style="font-size: 1.2rem; line-height: 1.8;">
+                  Unlike traditional MUN, the Conclave produces a tangible outcome — a policy brief, a community action plan, or a technology roadmap — presented publicly on Day 2.
+                </p>
+            </div>
+
+            <h3 class="brutal-text" style="font-size: 2rem; color: var(--accent-color); margin-bottom: 1.5rem;">Working Groups</h3>
+            <div class="about-grid" style="display: flex; flex-wrap: wrap; justify-content: center; margin-bottom: 3rem;">
+                <div class="about-card brutal-card">
+                    <h3 class="brutal-text" style="font-size: 1.5rem; color: var(--ivory); margin-bottom: 1rem;">Scientific</h3>
+                    <p class="mono-text text-dim" style="font-size: 0.95rem;">Evidence, data, and the science of climate change in the Indian context</p>
+                </div>
+                <div class="about-card brutal-card">
+                    <h3 class="brutal-text" style="font-size: 1.5rem; color: var(--ivory); margin-bottom: 1rem;">Policy</h3>
+                    <p class="mono-text text-dim" style="font-size: 0.95rem;">Government frameworks, international agreements, and regulatory mechanisms</p>
+                </div>
+                <div class="about-card brutal-card">
+                    <h3 class="brutal-text" style="font-size: 1.5rem; color: var(--ivory); margin-bottom: 1rem;">Technology</h3>
+                    <p class="mono-text text-dim" style="font-size: 0.95rem;">Clean energy, green innovation, and scalable climate tech solutions</p>
+                </div>
+                <div class="about-card brutal-card">
+                    <h3 class="brutal-text" style="font-size: 1.5rem; color: var(--ivory); margin-bottom: 1rem;">Community</h3>
+                    <p class="mono-text text-dim" style="font-size: 0.95rem;">Grassroots action, social equity, and behaviour-led change</p>
+                </div>
+            </div>
+            
+            <p class="mono-text" style="color: var(--ivory); font-style: italic; margin-bottom: 2rem;">Best Working Group & Best Delegate recognised. Policy brief published post-event.</p>
+            
+            <a href="/#register" class="brutal-btn mono-text" style="display: inline-block; padding: 1rem 3rem; text-decoration: none;">Register for Climate Conclave</a>
+        </section>
+
+        <!-- Call to Action & Footer -->
+        <section class="brutal-section" style="background: rgba(14, 21, 37, 0.9); border-top: 2px solid var(--border-color); text-align: center; padding: 6rem 2rem; position: relative;">
+            <h3 class="mono-text" style="color: var(--pale-blue); margin-bottom: 1rem; font-size: 1.2rem;">Found your vertical?</h3>
+            <h2 class="display-large brutal-text">SEATS ARE LIMITED.<br><span style="color: var(--accent-color);">REGISTER EARLY.</span></h2>
+            <a href="/#register" class="brutal-btn mono-text mt-4" style="display: inline-block; font-size: 1.2rem; padding: 1.5rem 4rem; text-transform: uppercase; text-decoration: none;">Register Now</a>
+        </section>
+
+        <footer class="footer mono-text" style="border-top: 2px solid var(--border-color); padding: 5rem 2rem 2rem 2rem; background: var(--deep-space); position: relative;">
+            <div class="container about-grid" style="display: flex; flex-wrap: wrap; justify-content: center; margin-bottom: 4rem; gap: 4rem;">
+                <div>
+                    <h3 class="brutal-text" style="font-size: 1.8rem; margin-bottom: 1rem; color: var(--ivory);">CAELYS</h3>
+                    <p class="text-dim" style="line-height: 1.6;">Youth Summit<br>Jodhpur, 2027</p>
+                </div>
+                <div>
+                    <h3 class="brutal-text" style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--ivory);">PAGES</h3>
+                    <ul style="list-style: none; padding: 0; line-height: 2;">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/about.html">About</a></li>
+                        <li><a href="/verticals.html">Verticals</a></li>
+                        <li><a href="/team.html">Team</a></li>
+                        <li><a href="/register.html">Register</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="brutal-text" style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--ivory);">CONNECT</h3>
+                    <p class="text-dim" style="line-height: 2;">
+                        <a href="https://www.instagram.com/caelys.0206/" target="_blank" style="display: inline-flex; align-items: center; gap: 0.5rem;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>caelys.0206</a><br>
+                        <a href="https://www.linkedin.com/company/cael-youth-summitsd0206/" target="_blank" style="display: inline-flex; align-items: center; gap: 0.5rem;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>CAELYS</a><br>
+                        <a href="#" style="display: inline-flex; align-items: center; gap: 0.5rem;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>caelys.in</a>
+                    </p>
+                </div>
+            </div>
+            <div class="container" style="text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); color: var(--pale-blue); font-size: 0.9rem;">
+                &copy; 2026 CAELYS Youth Summit. All rights reserved.
+            </div>
+        </footer>
+
+      </main>
+    </div>
+
+    <!-- Scripts -->
+  </body>
+</html>
+
+
+
+
+

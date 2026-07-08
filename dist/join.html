@@ -7,7 +7,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/style.css">
     <style>
       .text-dim { color: var(--pale-blue); }
       .text-center { text-align: center; }
@@ -63,10 +62,15 @@
         color: var(--ivory);
       }
     </style>
+    <script type="module" crossorigin src="/assets/join-D5sHuyzI.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/modulepreload-polyfill-Dezn_h7o.js">
+    <link rel="modulepreload" crossorigin href="/assets/main-BwIjHfT7.js">
+    <link rel="modulepreload" crossorigin href="/assets/firebase-db-BsdMy0SF.js">
+    <link rel="stylesheet" crossorigin href="/assets/style-CTsYHIFB.css">
   </head>
   <body>
     <!-- Brutalist Noise Overlay -->
-    <div class="noise-overlay" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 9998; opacity: 0.04; background-image: url('data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E');"></div>
+    <div class="noise-overlay" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 9998; opacity: 0.04; background-image: url('data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(&quot;%23noiseFilter&quot;)'/%3E%3C/svg%3E');"></div>
     <div id="global-loader">
       <div class="loader-bg"></div>
       <div class="loader-content">
@@ -243,67 +247,6 @@
     </div>
 
     <!-- Scripts -->
-    <script type="module" src="/main.js"></script>
-    <script type="module">
-        import { submitTeamApplication } from "/firebase-db.js";
-                const reasonInput = document.getElementById('form-reason');
-        const wordCountDisplay = document.getElementById('word-count');
-        reasonInput.addEventListener('input', () => {
-            const count = reasonInput.value.trim().split(/\s+/).filter(word => word.length > 0).length;
-            wordCountDisplay.innerText = `Words: ${count} / 100`;
-            if (count >= 100) {
-                wordCountDisplay.style.color = 'var(--accent-color)';
-            } else {
-                wordCountDisplay.style.color = 'var(--pale-blue)';
-            }
-        });
-        const form = document.getElementById('registration-form');
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const btn = form.querySelector('button[type="submit"]');
-            btn.innerText = 'PROCESSING...';
-            btn.style.opacity = '0.5';
-            
-            const name = document.getElementById('form-name').value;
-            const email = document.getElementById('form-email').value;
-            const phone = document.getElementById('form-phone').value;
-            const institution = document.getElementById('form-inst').value;
-            const vertical = document.getElementById('selected-vertical-name').innerText;
-            const reason = document.getElementById('form-reason').value;
-            const wordCount = reason.trim().split(/\s+/).filter(word => word.length > 0).length;
-            
-            if (wordCount < 100) {
-                alert(`Please write at least 100 words (Currently: ${wordCount}).`);
-                btn.innerText = 'Submit Application ?';
-                btn.style.opacity = '1';
-                return;
-            }
-            
-            const portfolio = document.querySelector('input[type="url"]').value;
-            
-            try {
-                const response = await submitTeamApplication({ name, email, phone, vertical: vertical, institution, reason, portfolio });
-                
-                if (response.success) {
-                    fetch('/api/send-email', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ type: 'team', email, name, vertical }) }).catch(console.error);
-                    form.innerHTML = '<h2 class="display-large brutal-text" style="color: var(--accent-color); text-align: center; width: 100%;">TICKET SECURED ✓</h2><p class="mono-text text-dim" style="text-align: center; margin-top: 2rem; font-size: 1.2rem;">Your registration has been recorded in the CAELYS system.</p>';
-                } else {
-                    if (response.error === 'EMAIL_EXISTS') {
-                        alert('This email has already submitted an application!');
-                    } else {
-                        alert('Application failed. Please try again.');
-                    }
-                    btn.innerText = 'Submit Registration →';
-                    btn.style.opacity = '1';
-                }
-            } catch (err) {
-                console.error(err);
-                alert('Server connection failed. Is the backend running?');
-                btn.innerText = 'Submit Registration →';
-                btn.style.opacity = '1';
-            }
-        });
-    </script>
   </body>
 </html>
 

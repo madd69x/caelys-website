@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CAELYS Research | Team</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+      .text-dim { color: var(--pale-blue); }
+      .text-center { text-align: center; }
+      footer a { color: var(--pale-blue); text-decoration: none; transition: color 0.2s; }
+      footer a:hover { color: var(--accent-color); }
+      
+      /* Photo Placeholder Style */
+      .photo-placeholder {
+        width: 100%;
+        aspect-ratio: 4/5;
+        background: var(--deep-space);
+        border: 2px dashed var(--pale-blue);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 2rem;
+        transition: border-color 0.3s;
+      }
+      .photo-placeholder p {
+        color: var(--pale-blue);
+        font-family: 'Space Mono', monospace;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+      
+      /* Team Initials Style */
+      .initials-block {
+        width: 100%;
+        aspect-ratio: 1/1;
+        background: rgba(14, 21, 37, 0.5);
+        border: 2px solid var(--border-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+      }
+      .initials-block h1 {
+        font-size: 4rem;
+        color: var(--accent-color);
+      }
+      
+      .team-category {
+        margin-top: 4rem;
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--border-color);
+      }
+    </style>
+    <script type="module" crossorigin src="/assets/modulepreload-polyfill-Dezn_h7o.js"></script>
+    <script type="module" crossorigin src="/assets/main-BwIjHfT7.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/style-CTsYHIFB.css">
+  </head>
+  <body>
+    <!-- Brutalist Noise Overlay -->
+    <div class="noise-overlay" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 9998; opacity: 0.04; background-image: url('data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(&quot;%23noiseFilter&quot;)'/%3E%3C/svg%3E');"></div>
+    <div id="global-loader">
+      <div class="loader-bg"></div>
+      <div class="loader-content">
+        <h1 class="loader-text brutal-text" id="loader-text">INITIALIZING</h1>
+        <div class="loader-bar-container"><div class="loader-bar" id="loader-bar"></div></div>
+        <button id="enter-experience-btn" class="brutal-btn" style="display: none; margin: 2rem auto 0; font-size: 1.5rem; padding: 1rem 3rem;">[ ENTER CAELYS ]</button>
+      </div>
+    </div>
+    <div id="flash-overlay"></div>
+    <div class="cursor" id="cursor"></div>
+    <canvas id="webgl-canvas"></canvas>
+
+    <div id="ui-layer">
+      <!-- Header / Nav -->
+      <header class="header brutal-header">
+        <div class="logo-box">
+          <a href="/"><div class="logo-icon brutalist-logo"></div></a>
+        </div>
+        <nav class="nav mono-text">
+          <a href="/">[ HOME ]</a>
+          <a href="/about.html">[ ABOUT ]</a>
+          <a href="/verticals.html">[ VERTICALS ]</a>
+          <a href="/team.html">[ TEAM ]</a>
+          <a href="/register.html">[ REGISTER ]</a>
+          <a href="/admin.html">[ ADMIN ]</a>
+        </nav>
+      </header>
+
+      <main class="content" style="padding-top: 150px;">
+        
+        <!-- Hero Section -->
+        <section class="brutal-section container" style="max-width: 1000px; margin: 0 auto; margin-bottom: 6rem;">
+            <h3 class="mono-text text-dim">> BEHIND THE CURTAIN</h3>
+            <h1 class="display-title brutal-text" style="line-height: 0.9; margin-top: 1rem; font-size: clamp(3rem, 6vw, 6rem);">THE PEOPLE<br><span style="color: var(--accent-color);">BUILDING CAELYS</span></h1>
+        </section>
+
+                <!-- Core Section -->
+        <section class="brutal-section container" style="max-width: 1000px; margin: 0 auto; margin-bottom: 6rem;">
+            <h2 class="display-large brutal-text" style="margin-bottom: 3rem;">CORE</h2>
+            
+            <div class="about-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 4rem;">
+                <!-- Member -->
+                <div>
+                    <div class="photo-placeholder">
+                        <p>Photo Coming Soon</p>
+                    </div>
+                    <h3 class="display-small brutal-text" style="color: var(--ivory); margin-bottom: 0.5rem;">DISHA VISHAL JARIWALA</h3>
+                    <p class="mono-text" style="color: var(--accent-color); font-weight: bold; margin-bottom: 1.5rem;">Chief Executive Officer</p>
+                </div>
+                
+                <!-- Member -->
+                <div>
+                    <div class="photo-placeholder">
+                        <p>Photo Coming Soon</p>
+                    </div>
+                    <h3 class="display-small brutal-text" style="color: var(--ivory); margin-bottom: 0.5rem;">SUPRIYA VISHNOI</h3>
+                    <p class="mono-text" style="color: var(--accent-color); font-weight: bold; margin-bottom: 1.5rem;">Chief Operative Officer</p>
+                </div>
+
+                <!-- Member -->
+                <div>
+                    <div class="photo-placeholder">
+                        <p>Photo Coming Soon</p>
+                    </div>
+                    <h3 class="display-small brutal-text" style="color: var(--ivory); margin-bottom: 0.5rem;">SAMRIDDHI DADSENA</h3>
+                    <p class="mono-text" style="color: var(--accent-color); font-weight: bold; margin-bottom: 1.5rem;">Vice President</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Departments Section -->
+        <section class="brutal-section container" style="max-width: 1000px; margin: 0 auto; margin-bottom: 8rem;">
+            <h2 class="display-large brutal-text" style="margin-bottom: 1rem;">DEPARTMENTS</h2>
+            
+            <!-- Human Resources -->
+            <h3 class="brutal-text team-category" style="font-size: 1.8rem; color: var(--ivory);">Human Resources</h3>
+            <div class="about-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem;">
+                <div class="about-card brutal-card" style="text-align: center;">
+                    <div class="initials-block"><h1 class="brutal-text">PS</h1></div>
+                    <h3 class="brutal-text" style="font-size: 1.5rem; color: var(--ivory); margin-bottom: 0.5rem;">Praveen Singh</h3>
+                    <p class="mono-text text-dim">Director of Human Resources</p>
+                </div>
+                <div class="about-card brutal-card" style="text-align: center;">
+                    <div class="initials-block"><h1 class="brutal-text">DR</h1></div>
+                    <h3 class="brutal-text" style="font-size: 1.5rem; color: var(--ivory); margin-bottom: 0.5rem;">Diksha Ramchandani</h3>
+                    <p class="mono-text text-dim">Head of Human Resources</p>
+                </div>
+                <div class="about-card brutal-card" style="text-align: center;">
+                    <div class="initials-block"><h1 class="brutal-text">VC</h1></div>
+                    <h3 class="brutal-text" style="font-size: 1.5rem; color: var(--ivory); margin-bottom: 0.5rem;">Vanshika Choudhary</h3>
+                    <p class="mono-text text-dim">Assistant Head of Human Resources</p>
+                </div>
+                <div class="about-card brutal-card" style="text-align: center;">
+                    <div class="initials-block"><h1 class="brutal-text">AS</h1></div>
+                    <h3 class="brutal-text" style="font-size: 1.5rem; color: var(--ivory); margin-bottom: 0.5rem;">Ananya Singh</h3>
+                    <p class="mono-text text-dim">Assistant Lead of Human Resources</p>
+                </div>
+            </div>
+
+            <!-- Technology and Content -->
+            <h3 class="brutal-text team-category" style="font-size: 1.8rem; color: var(--ivory);">Technology and Content</h3>
+            <div class="about-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem;">
+                <div class="about-card brutal-card" style="text-align: center;">
+                    <div class="initials-block"><h1 class="brutal-text">MV</h1></div>
+                    <h3 class="brutal-text" style="font-size: 1.5rem; color: var(--ivory); margin-bottom: 0.5rem;">Mudit Vaishnav</h3>
+                    <p class="mono-text text-dim">Director of Technology and Content</p>
+                </div>
+                <div class="about-card brutal-card" style="text-align: center;">
+                    <div class="initials-block"><h1 class="brutal-text">SK</h1></div>
+                    <h3 class="brutal-text" style="font-size: 1.5rem; color: var(--ivory); margin-bottom: 0.5rem;">Siddhi Kothiwal</h3>
+                    <p class="mono-text text-dim">Head of Technology and Content</p>
+                </div>
+                <div class="about-card brutal-card" style="text-align: center;">
+                    <div class="initials-block"><h1 class="brutal-text">NM</h1></div>
+                    <h3 class="brutal-text" style="font-size: 1.5rem; color: var(--ivory); margin-bottom: 0.5rem;">Netri Mishra</h3>
+                    <p class="mono-text text-dim">Content Designer</p>
+                </div>
+                <div class="about-card brutal-card" style="text-align: center;">
+                    <div class="initials-block"><h1 class="brutal-text">LS</h1></div>
+                    <h3 class="brutal-text" style="font-size: 1.5rem; color: var(--ivory); margin-bottom: 0.5rem;">Laksh Singh</h3>
+                    <p class="mono-text text-dim">Content Designer</p>
+                </div>
+                <div class="about-card brutal-card" style="text-align: center;">
+                    <div class="initials-block"><h1 class="brutal-text">VT</h1></div>
+                    <h3 class="brutal-text" style="font-size: 1.5rem; color: var(--ivory); margin-bottom: 0.5rem;">Vaishnavi Tiwari</h3>
+                    <p class="mono-text text-dim">Video and Media Producer</p>
+                </div>
+                <div class="about-card brutal-card" style="text-align: center;">
+                    <div class="initials-block"><h1 class="brutal-text">MM</h1></div>
+                    <h3 class="brutal-text" style="font-size: 1.5rem; color: var(--ivory); margin-bottom: 0.5rem;">Mahima Meena</h3>
+                    <p class="mono-text text-dim">Video and Media Producer</p>
+                </div>
+            </div>
+
+            <!-- Public Relations and Marketing -->
+            <h3 class="brutal-text team-category" style="font-size: 1.8rem; color: var(--ivory);">Public Relations and Marketing</h3>
+            <div class="about-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem;">
+                <div class="about-card brutal-card" style="text-align: center;">
+                    <div class="initials-block"><h1 class="brutal-text">SS</h1></div>
+                    <h3 class="brutal-text" style="font-size: 1.5rem; color: var(--ivory); margin-bottom: 0.5rem;">Samiksha Saran</h3>
+                    <p class="mono-text text-dim">Director of Public Relations and Marketing</p>
+                </div>
+                <div class="about-card brutal-card" style="text-align: center;">
+                    <div class="initials-block"><h1 class="brutal-text">GM</h1></div>
+                    <h3 class="brutal-text" style="font-size: 1.5rem; color: var(--ivory); margin-bottom: 0.5rem;">Gaurav Malpani</h3>
+                    <p class="mono-text text-dim">Head of Public Relations and Marketing</p>
+                </div>
+                <div class="about-card brutal-card" style="text-align: center;">
+                    <div class="initials-block"><h1 class="brutal-text">JS</h1></div>
+                    <h3 class="brutal-text" style="font-size: 1.5rem; color: var(--ivory); margin-bottom: 0.5rem;">Jeevika Saran</h3>
+                    <p class="mono-text text-dim">Head of Public Relations and Marketing</p>
+                </div>
+                <div class="about-card brutal-card" style="text-align: center;">
+                    <div class="initials-block"><h1 class="brutal-text">SS</h1></div>
+                    <h3 class="brutal-text" style="font-size: 1.5rem; color: var(--ivory); margin-bottom: 0.5rem;">Shagun Singhvi</h3>
+                    <p class="mono-text text-dim">Outreach Coordinator</p>
+                </div>
+                <div class="about-card brutal-card" style="text-align: center;">
+                    <div class="initials-block"><h1 class="brutal-text">PR</h1></div>
+                    <h3 class="brutal-text" style="font-size: 1.5rem; color: var(--ivory); margin-bottom: 0.5rem;">Pratibha Raj</h3>
+                    <p class="mono-text text-dim">Assistant Head of PR and Marketing</p>
+                </div>
+                <div class="about-card brutal-card" style="text-align: center;">
+                    <div class="initials-block"><h1 class="brutal-text">MD</h1></div>
+                    <h3 class="brutal-text" style="font-size: 1.5rem; color: var(--ivory); margin-bottom: 0.5rem;">Mahi Dubey</h3>
+                    <p class="mono-text text-dim">Assistant Lead of PR and Marketing</p>
+                </div>
+                <div class="about-card brutal-card" style="text-align: center;">
+                    <div class="initials-block"><h1 class="brutal-text">NB</h1></div>
+                    <h3 class="brutal-text" style="font-size: 1.5rem; color: var(--ivory); margin-bottom: 0.5rem;">Nitima Bishnoi</h3>
+                    <p class="mono-text text-dim">Assistant Lead of PR and Marketing</p>
+                </div>
+            </div>
+
+            <!-- Programmes -->
+            <h3 class="brutal-text team-category" style="font-size: 1.8rem; color: var(--ivory);">Programmes</h3>
+            <div class="about-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem;">
+                <div class="about-card brutal-card" style="text-align: center;">
+                    <div class="initials-block"><h1 class="brutal-text">PG</h1></div>
+                    <h3 class="brutal-text" style="font-size: 1.5rem; color: var(--ivory); margin-bottom: 0.5rem;">Palak Gumasta</h3>
+                    <p class="mono-text text-dim">Head of Debate/ Rhetorics</p>
+                </div>
+                <div class="about-card brutal-card" style="text-align: center;">
+                    <div class="initials-block"><h1 class="brutal-text">AJ</h1></div>
+                    <h3 class="brutal-text" style="font-size: 1.5rem; color: var(--ivory); margin-bottom: 0.5rem;">Aditi Jangid</h3>
+                    <p class="mono-text text-dim">Head of MUN</p>
+                </div>
+                <div class="about-card brutal-card" style="text-align: center;">
+                    <div class="initials-block"><h1 class="brutal-text">HB</h1></div>
+                    <h3 class="brutal-text" style="font-size: 1.5rem; color: var(--ivory); margin-bottom: 0.5rem;">Harman Kaur Bakshi</h3>
+                    <p class="mono-text text-dim">Head of MUN</p>
+                </div>
+                <div class="about-card brutal-card" style="text-align: center;">
+                    <div class="initials-block"><h1 class="brutal-text">SH</h1></div>
+                    <h3 class="brutal-text" style="font-size: 1.5rem; color: var(--ivory); margin-bottom: 0.5rem;">Shiv K. Haswani</h3>
+                    <p class="mono-text text-dim">Head of Climate Conclave</p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Call to Action & Footer -->
+        <section class="brutal-section" style="background: rgba(14, 21, 37, 0.9); border-top: 2px solid var(--border-color); text-align: center; padding: 6rem 2rem; position: relative;">
+            <h3 class="mono-text" style="color: var(--pale-blue); margin-bottom: 1rem; font-size: 1.2rem;">We are still building.</h3>
+            <h2 class="display-large brutal-text">WANT TO BE PART OF<br><span style="color: var(--accent-color);">THIS?</span></h2>
+            <p class="mono-text text-dim" style="max-width: 600px; margin: 2rem auto; line-height: 1.8;">
+                CAELYS is built by people who care deeply about creating something extraordinary. If you are organised, driven, and want to be part of a team building something meaningful — we want to hear from you.
+            </p>
+            <a href="/join" class="brutal-btn mono-text mt-4" style="display: inline-block; font-size: 1.2rem; padding: 1.5rem 4rem; text-transform: uppercase; text-decoration: none;">Apply to Join the Team</a>
+        </section>
+
+        <footer class="footer mono-text" style="border-top: 2px solid var(--border-color); padding: 5rem 2rem 2rem 2rem; background: var(--deep-space); position: relative;">
+            <div class="container about-grid" style="display: flex; flex-wrap: wrap; justify-content: center; margin-bottom: 4rem; gap: 4rem;">
+                <div>
+                    <h3 class="brutal-text" style="font-size: 1.8rem; margin-bottom: 1rem; color: var(--ivory);">CAELYS</h3>
+                    <p class="text-dim" style="line-height: 1.6;">Youth Summit<br>Jodhpur, 2027</p>
+                </div>
+                <div>
+                    <h3 class="brutal-text" style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--ivory);">PAGES</h3>
+                    <ul style="list-style: none; padding: 0; line-height: 2;">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/about.html">About</a></li>
+                        <li><a href="/verticals.html">Verticals</a></li>
+                        <li><a href="/team.html">Team</a></li>
+                        <li><a href="/register.html">Register</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="brutal-text" style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--ivory);">CONNECT</h3>
+                    <p class="text-dim" style="line-height: 2;">
+                        <a href="https://www.instagram.com/caelys.0206/" target="_blank" style="display: inline-flex; align-items: center; gap: 0.5rem;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>caelys.0206</a><br>
+                        <a href="https://www.linkedin.com/company/cael-youth-summitsd0206/" target="_blank" style="display: inline-flex; align-items: center; gap: 0.5rem;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>CAELYS</a><br>
+                        <a href="#" style="display: inline-flex; align-items: center; gap: 0.5rem;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>caelys.in</a>
+                    </p>
+                </div>
+            </div>
+            <div class="container" style="text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); color: var(--pale-blue); font-size: 0.9rem;">
+                &copy; 2026 CAELYS Youth Summit. All rights reserved.
+            </div>
+        </footer>
+
+      </main>
+    </div>
+
+    <!-- Scripts -->
+  </body>
+</html>
+
+
+
+
+
+
+

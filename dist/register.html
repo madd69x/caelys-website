@@ -3,11 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CAELYS Research | Join Team</title>|<title>CAELYS Research | Join Team</title>
+    <title>CAELYS Research | Register</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/style.css">
     <style>
       .text-dim { color: var(--pale-blue); }
       .text-center { text-align: center; }
@@ -63,10 +62,15 @@
         color: var(--ivory);
       }
     </style>
+    <script type="module" crossorigin src="/assets/register-TqdLupXU.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/modulepreload-polyfill-Dezn_h7o.js">
+    <link rel="modulepreload" crossorigin href="/assets/main-BwIjHfT7.js">
+    <link rel="modulepreload" crossorigin href="/assets/firebase-db-BsdMy0SF.js">
+    <link rel="stylesheet" crossorigin href="/assets/style-CTsYHIFB.css">
   </head>
   <body>
     <!-- Brutalist Noise Overlay -->
-    <div class="noise-overlay" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 9998; opacity: 0.04; background-image: url('data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E');"></div>
+    <div class="noise-overlay" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 9998; opacity: 0.04; background-image: url('data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(&quot;%23noiseFilter&quot;)'/%3E%3C/svg%3E');"></div>
     <div id="global-loader">
       <div class="loader-bg"></div>
       <div class="loader-content">
@@ -99,44 +103,49 @@
         
         <!-- Hero Section -->
         <section class="brutal-section container" style="max-width: 1000px; margin: 0 auto; margin-bottom: 4rem; text-align: center;">
-            <h3 class="mono-text text-dim">> JOIN THE SECRETARIAT</h3>
+            <h3 class="mono-text text-dim">> JODHPUR, 2027</h3>
             <h1 class="display-title brutal-text" style="line-height: 0.9; margin-top: 1rem; margin-bottom: 2rem; font-size: clamp(3rem, 6vw, 6rem);">YOUR SEAT AT<br><span style="color: var(--accent-color);">THE TABLE</span></h1>
             <p class="mono-text text-dim" style="font-size: 1.2rem; max-width: 800px; margin: 0 auto;">
-              Choose your desired department, fill in your application, and join the core team organizing CAELYS 2027.
+              Choose your vertical, fill in your details, and secure your place at CAELYS 2027. Seats are limited.
             </p>
         </section>
 
         <!-- Vertical Selection Grid -->
         <section class="brutal-section container" style="max-width: 1200px; margin: 0 auto; margin-bottom: 6rem;">
-            <h3 class="mono-text" style="color: var(--ivory); font-size: 1.2rem; margin-bottom: 2rem; text-align: center;">Select your desired department</h3>
+            <h3 class="mono-text" style="color: var(--ivory); font-size: 1.2rem; margin-bottom: 2rem; text-align: center;">Select your vertical to register</h3>
             
             <div class="about-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem;">
                 
-                <div class="about-card brutal-card register-card selected" data-vertical="Design & Media">
-                    <h3 class="brutal-text" style="font-size: 1.8rem; color: var(--ivory); margin-bottom: 1rem;">Design & Media</h3>
-                    <p class="mono-text text-dim" style="margin-bottom: 2rem;">Graphics, UI/UX, Video</p>
-                    <div class="mono-text card-action" style="align-self: stretch; text-align: center;">Selected ?</div>
+                <!-- MUN -->
+                <div class="about-card brutal-card register-card" data-vertical="Model United Nations">
+                    <h3 class="brutal-text" style="font-size: 1.8rem; color: var(--ivory); margin-bottom: 1rem;">Model United Nations</h3>
+                    <p class="mono-text text-dim" style="margin-bottom: 2rem;">Rs. 1500 – 2500</p>
+                    <div class="mono-text card-action" style="align-self: stretch; text-align: center;">Select & Register</div>
                 </div>
 
-                <div class="about-card brutal-card register-card" data-vertical="Operations">
-                    <h3 class="brutal-text" style="font-size: 1.8rem; color: var(--ivory); margin-bottom: 1rem;">Operations</h3>
-                    <p class="mono-text text-dim" style="margin-bottom: 2rem;">Logistics, On-ground</p>
-                    <div class="mono-text card-action" style="align-self: stretch; text-align: center;">Select Role</div>
+                <!-- Debate (Default Selected) -->
+                <div class="about-card brutal-card register-card selected" data-vertical="Debate & Rhetoric">
+                    <h3 class="brutal-text" style="font-size: 1.8rem; color: var(--ivory); margin-bottom: 1rem;">Debate & Rhetoric</h3>
+                    <p class="mono-text text-dim" style="margin-bottom: 2rem;">Rs. 1500 – 2500</p>
+                    <div class="mono-text card-action" style="align-self: stretch; text-align: center;">Selected ✓</div>
                 </div>
 
-                <div class="about-card brutal-card register-card" data-vertical="Outreach">
-                    <h3 class="brutal-text" style="font-size: 1.8rem; color: var(--ivory); margin-bottom: 1rem;">Outreach</h3>
-                    <p class="mono-text text-dim" style="margin-bottom: 2rem;">Marketing, PR</p>
-                    <div class="mono-text card-action" style="align-self: stretch; text-align: center;">Select Role</div>
+                <!-- Climate Conclave -->
+                <div class="about-card brutal-card register-card" data-vertical="Climate Conclave">
+                    <h3 class="brutal-text" style="font-size: 1.8rem; color: var(--ivory); margin-bottom: 1rem;">Climate Conclave</h3>
+                    <p class="mono-text text-dim" style="margin-bottom: 2rem;">Rs. 1500 – 2500</p>
+                    <div class="mono-text card-action" style="align-self: stretch; text-align: center;">Select & Register</div>
                 </div>
+
             </div>
         </section>
-<!-- Registration Form -->
+
+        <!-- Registration Form -->
         <section class="brutal-section container" style="max-width: 1000px; margin: 0 auto; margin-bottom: 8rem;">
             <div style="background: rgba(14, 21, 37, 0.7); border: 2px solid var(--border-color); padding: 4rem; backdrop-filter: blur(10px);">
                 
-                <h3 class="mono-text text-dim" style="margin-bottom: 0.5rem; font-size: 1.2rem;">Applying for</h3>
-                <h2 id="selected-vertical-name" class="display-large brutal-text" style="color: var(--accent-color); margin-bottom: 3rem;">Design & Media</h2>
+                <h3 class="mono-text text-dim" style="margin-bottom: 0.5rem; font-size: 1.2rem;">Registering for</h3>
+                <h2 id="selected-vertical-name" class="display-large brutal-text" style="color: var(--accent-color); margin-bottom: 3rem;">Debate & Rhetoric</h2>
 
                 <form id="registration-form">
                     
@@ -173,16 +182,31 @@
                             <input id="form-phone" type="tel" class="brutal-input" placeholder="+91 XXXXX XXXXX" required>
                         </div>
                         <div class="brutal-input-group">
-                            <label class="brutal-label">Portfolio / Resume Link</label>
-                            <input type="url" class="brutal-input" placeholder="https://link-to-your-work" required>
+                            <label class="brutal-label">Prior Experience</label>
+                            <select class="brutal-input" required>
+                                <option value="" disabled selected>Select one</option>
+                                <option value="none">None (First timer)</option>
+                                <option value="1-2">1-2 events</option>
+                                <option value="3-5">3-5 events</option>
+                                <option value="5+">5+ events</option>
+                            </select>
                         </div>
                     </div>
 
                     <div class="form-grid mt-4">
                         <div class="brutal-input-group">
-                            <label class="brutal-label">Why do you want to join?</label><textarea id="form-reason" class="brutal-input" placeholder="Tell us why (min 100 words)..." style="min-height: 100px;" required></textarea><p id="word-count" class="mono-text text-dim" style="font-size: 0.8rem; margin-top: 0.5rem;">Words: 0 / 100</p></div>
+                            <label class="brutal-label">Registering as</label>
+                            <select class="brutal-input" required>
+                                <option value="" disabled selected>Select one</option>
+                                <option value="individual">Individual</option>
+                                <option value="delegation">School Delegation</option>
+                                <option value="team">Team (Debate)</option>
+                            </select>
+                        </div>
                         <div class="brutal-input-group">
-                            </div>
+                            <label class="brutal-label">Dietary Requirements</label>
+                            <input type="text" class="brutal-input" placeholder="e.g. Vegetarian, Vegan, No allergies">
+                        </div>
                     </div>
 
                     <div class="form-grid mt-4">
@@ -243,72 +267,8 @@
     </div>
 
     <!-- Scripts -->
-    <script type="module" src="/main.js"></script>
-    <script type="module">
-        import { submitTeamApplication } from "/firebase-db.js";
-                const reasonInput = document.getElementById('form-reason');
-        const wordCountDisplay = document.getElementById('word-count');
-        reasonInput.addEventListener('input', () => {
-            const count = reasonInput.value.trim().split(/\s+/).filter(word => word.length > 0).length;
-            wordCountDisplay.innerText = `Words: ${count} / 100`;
-            if (count >= 100) {
-                wordCountDisplay.style.color = 'var(--accent-color)';
-            } else {
-                wordCountDisplay.style.color = 'var(--pale-blue)';
-            }
-        });
-        const form = document.getElementById('registration-form');
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const btn = form.querySelector('button[type="submit"]');
-            btn.innerText = 'PROCESSING...';
-            btn.style.opacity = '0.5';
-            
-            const name = document.getElementById('form-name').value;
-            const email = document.getElementById('form-email').value;
-            const phone = document.getElementById('form-phone').value;
-            const institution = document.getElementById('form-inst').value;
-            const vertical = document.getElementById('selected-vertical-name').innerText;
-            const reason = document.getElementById('form-reason').value;
-            const wordCount = reason.trim().split(/\s+/).filter(word => word.length > 0).length;
-            
-            if (wordCount < 100) {
-                alert(`Please write at least 100 words (Currently: ${wordCount}).`);
-                btn.innerText = 'Submit Application ?';
-                btn.style.opacity = '1';
-                return;
-            }
-            
-            const portfolio = document.querySelector('input[type="url"]').value;
-            
-            try {
-                const response = await submitTeamApplication({ name, email, phone, vertical: vertical, institution, reason, portfolio });
-                
-                if (response.success) {
-                    fetch('/api/send-email', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ type: 'team', email, name, vertical }) }).catch(console.error);
-                    form.innerHTML = '<h2 class="display-large brutal-text" style="color: var(--accent-color); text-align: center; width: 100%;">TICKET SECURED ✓</h2><p class="mono-text text-dim" style="text-align: center; margin-top: 2rem; font-size: 1.2rem;">Your registration has been recorded in the CAELYS system.</p>';
-                } else {
-                    if (response.error === 'EMAIL_EXISTS') {
-                        alert('This email has already submitted an application!');
-                    } else {
-                        alert('Application failed. Please try again.');
-                    }
-                    btn.innerText = 'Submit Registration →';
-                    btn.style.opacity = '1';
-                }
-            } catch (err) {
-                console.error(err);
-                alert('Server connection failed. Is the backend running?');
-                btn.innerText = 'Submit Registration →';
-                btn.style.opacity = '1';
-            }
-        });
-    </script>
   </body>
 </html>
-
-
-
 
 
 
