@@ -266,22 +266,21 @@
     <script type="module" src="/main.js"></script>
     <script type="module">
         import { submitRegistration, checkEmailExists } from "/firebase-db.js";
+        const form = document.getElementById('registration-form');
         const summitDate = new Date('2027-05-16T00:00:00+05:30');
-        const verticalSelection = document.getElementById('vertical-selection');
-        const step2 = document.getElementById('step-2');
+        const verticalSelection = document.getElementById('selected-vertical-name');
         const formContainer = document.querySelector('.brutal-section');
 
         if (new Date() < summitDate) {
             if (verticalSelection) verticalSelection.style.display = 'none';
-            if (step2) step2.style.display = 'none';
+            if (form) form.style.display = 'none';
             
             const message = document.createElement('div');
             message.style.textAlign = 'center';
             message.style.marginTop = '4rem';
-            message.innerHTML = '<h2 class=""display-large brutal-text"" style=""color: var(--accent-color);"">PORTAL LOCKED</h2><p class=""mono-text text-dim"" style=""margin-top: 2rem; font-size: 1.2rem;"">Registrations will officially open on May 16, 2027.</p>';
+            message.innerHTML = '<h2 class="display-large brutal-text" style="color: var(--accent-color);">PORTAL LOCKED</h2><p class="mono-text text-dim" style="margin-top: 2rem; font-size: 1.2rem;">Registrations will officially open on May 16, 2027.</p>';
             if (formContainer) formContainer.appendChild(message);
         }
-        const form = document.getElementById('registration-form');
         
         // OTP UI elements to inject
         const otpContainer = document.createElement('div');
