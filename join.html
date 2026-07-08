@@ -180,7 +180,7 @@
 
                     <div class="form-grid mt-4">
                         <div class="brutal-input-group">
-                            <label class="brutal-label">Why do you want to join?</label><textarea class="brutal-input" placeholder="Briefly tell us why..." style="min-height: 100px;" required></textarea></div>
+                            <label class="brutal-label">Why do you want to join?</label><textarea id="form-reason" class="brutal-input" placeholder="Tell us why (min 100 words)..." style="min-height: 100px;" required></textarea><p id="word-count" class="mono-text text-dim" style="font-size: 0.8rem; margin-top: 0.5rem;">Words: 0 / 100</p></div>
                         <div class="brutal-input-group">
                             </div>
                     </div>
@@ -246,6 +246,17 @@
     <script type="module" src="/main.js"></script>
     <script type="module">
         import { submitTeamApplication } from "/firebase-db.js";
+                const reasonInput = document.getElementById('form-reason');
+        const wordCountDisplay = document.getElementById('word-count');
+        reasonInput.addEventListener('input', () => {
+            const count = reasonInput.value.trim().split(/\s+/).filter(word => word.length > 0).length;
+            wordCountDisplay.innerText = Words: ${count} / 100;
+            if (count >= 100) {
+                wordCountDisplay.style.color = 'var(--accent-color)';
+            } else {
+                wordCountDisplay.style.color = 'var(--pale-blue)';
+            }
+        });
         const form = document.getElementById('registration-form');
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -258,14 +269,30 @@
             const phone = document.getElementById('form-phone').value;
             const institution = document.getElementById('form-inst').value;
             const vertical = document.getElementById('selected-vertical-name').innerText;
+            const reason = document.getElementById('form-reason').value;
+            const wordCount = reason.trim().split(/\s+/).filter(word => word.length > 0).length;
+            
+            if (wordCount < 100) {
+                alert(Please write at least 100 words (Currently: ${wordCount}).);
+                btn.innerText = 'Submit Application ?';
+                btn.style.opacity = '1';
+                return;
+            }
+            
+            const portfolio = document.querySelector('input[type="url"]').value;
             
             try {
-                const response = await submitTeamApplication({ name, email, phone, vertical: vertical, institution });
+                const response = await submitTeamApplication({ name, email, phone, vertical: vertical, institution, reason, portfolio });
                 
                 if (response.success) {
+                    fetch('/api/send-email', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ type: 'team', email, name, vertical }) }).catch(console.error);
                     form.innerHTML = '<h2 class="display-large brutal-text" style="color: var(--accent-color); text-align: center; width: 100%;">TICKET SECURED ✓</h2><p class="mono-text text-dim" style="text-align: center; margin-top: 2rem; font-size: 1.2rem;">Your registration has been recorded in the CAELYS system.</p>';
                 } else {
-                    alert('Registration failed. Please try again.');
+                    if (response.error === 'EMAIL_EXISTS') {
+                        alert('This email has already submitted an application!');
+                    } else {
+                        alert('Application failed. Please try again.');
+                    }
                     btn.innerText = 'Submit Registration →';
                     btn.style.opacity = '1';
                 }
@@ -279,6 +306,9 @@
     </script>
   </body>
 </html>
+
+
+
 
 
 

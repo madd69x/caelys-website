@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc, getDocs, serverTimestamp, query, orderBy } from "firebase/firestore";
+import { getFirestore, collection, addDoc, getDocs, serverTimestamp, query, orderBy, where } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDYtnv4vRJJIxmUbiFgbknsC4ZdjxvG3jI",
@@ -16,6 +16,13 @@ const db = getFirestore(app);
 
 export async function submitRegistration(data) {
   try {
+    // Check for duplicates
+    const q = query(collection(db, "registrations"), where("email", "==", data.email));
+    const snapshot = await getDocs(q);
+    if (!snapshot.empty) {
+      return { success: false, error: "EMAIL_EXISTS" };
+    }
+
     const docRef = await addDoc(collection(db, "registrations"), {
       ...data,
       timestamp: serverTimestamp(),
@@ -30,6 +37,13 @@ export async function submitRegistration(data) {
 
 export async function submitTeamApplication(data) {
   try {
+    // Check for duplicates
+    const q = query(collection(db, "team_applications"), where("email", "==", data.email));
+    const snapshot = await getDocs(q);
+    if (!snapshot.empty) {
+      return { success: false, error: "EMAIL_EXISTS" };
+    }
+
     const docRef = await addDoc(collection(db, "team_applications"), {
       ...data,
       timestamp: serverTimestamp(),
@@ -71,3 +85,4 @@ export async function getTeamApplications() {
     return [];
   }
 }
+

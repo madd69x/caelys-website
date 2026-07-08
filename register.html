@@ -283,9 +283,14 @@
                 const response = await submitRegistration({ name, email, phone, vertical, institution });
                 
                 if (response.success) {
+                    fetch('/api/send-email', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ type: 'delegate', email, name, vertical }) }).catch(console.error);
                     form.innerHTML = '<h2 class="display-large brutal-text" style="color: var(--accent-color); text-align: center; width: 100%;">TICKET SECURED ✓</h2><p class="mono-text text-dim" style="text-align: center; margin-top: 2rem; font-size: 1.2rem;">Your registration has been recorded in the CAELYS system.</p>';
                 } else {
-                    alert('Registration failed. Please try again.');
+                    if (response.error === 'EMAIL_EXISTS') {
+                        alert('This email is already registered!');
+                    } else {
+                        alert('Registration failed. Please try again.');
+                    }
                     btn.innerText = 'Submit Registration →';
                     btn.style.opacity = '1';
                 }
@@ -299,6 +304,8 @@
     </script>
   </body>
 </html>
+
+
 
 
 
