@@ -1152,7 +1152,7 @@ if (taglineEl) {
 }
 
 // --- Live Countdown Timer ---
-const summitDate = new Date('2027-01-15T09:00:00+05:30');
+const summitDate = new Date('2027-05-16T00:00:00+05:30');
 
 function updateCountdown() {
   const now = new Date();

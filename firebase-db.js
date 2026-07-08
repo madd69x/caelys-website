@@ -14,16 +14,17 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 
+export function getCollectionName(vertical, type) {
+    let suffix = 'mun';
+    if (vertical.includes('Debate')) suffix = 'debate';
+    if (vertical.includes('Climate')) suffix = 'climate';
+    return type === 'delegate' ? `registrations_${suffix}` : `team_${suffix}`;
+}
+
 export async function submitRegistration(data) {
   try {
-    // Check for duplicates
-    const q = query(collection(db, "registrations"), where("email", "==", data.email));
-    const snapshot = await getDocs(q);
-    if (!snapshot.empty) {
-      return { success: false, error: "EMAIL_EXISTS" };
-    }
-
-    const docRef = await addDoc(collection(db, "registrations"), {
+    const colName = getCollectionName(data.vertical, 'delegate');
+    const docRef = await addDoc(collection(db, colName), {
       ...data,
       timestamp: serverTimestamp(),
       type: "delegate"
@@ -37,14 +38,8 @@ export async function submitRegistration(data) {
 
 export async function submitTeamApplication(data) {
   try {
-    // Check for duplicates
-    const q = query(collection(db, "team_applications"), where("email", "==", data.email));
-    const snapshot = await getDocs(q);
-    if (!snapshot.empty) {
-      return { success: false, error: "EMAIL_EXISTS" };
-    }
-
-    const docRef = await addDoc(collection(db, "team_applications"), {
+    const colName = getCollectionName(data.vertical, 'team');
+    const docRef = await addDoc(collection(db, colName), {
       ...data,
       timestamp: serverTimestamp(),
       type: "team"
@@ -56,9 +51,9 @@ export async function submitTeamApplication(data) {
   }
 }
 
-export async function getRegistrations() {
+export async function getCollectionData(collectionName) {
   try {
-    const q = query(collection(db, "registrations"), orderBy("timestamp", "desc"));
+    const q = query(collection(db, collectionName), orderBy("timestamp", "desc"));
     const querySnapshot = await getDocs(q);
     const data = [];
     querySnapshot.forEach((doc) => {
@@ -66,31 +61,15 @@ export async function getRegistrations() {
     });
     return data;
   } catch (e) {
-    console.error("Error fetching documents: ", e);
+    console.error(`Error fetching ${collectionName}: `, e);
     return [];
   }
 }
 
-export async function getTeamApplications() {
+export async function checkEmailExists(email, type, vertical) {
   try {
-    const q = query(collection(db, "team_applications"), orderBy("timestamp", "desc"));
-    const querySnapshot = await getDocs(q);
-    const data = [];
-    querySnapshot.forEach((doc) => {
-      data.push({ id: doc.id, ...doc.data() });
-    });
-    return data;
-  } catch (e) {
-    console.error("Error fetching documents: ", e);
-    return [];
-  }
-}
-
-
-export async function checkEmailExists(email, type) {
-  try {
-    const collectionName = type === 'delegate' ? "registrations" : "team_applications";
-    const q = query(collection(db, collectionName), where("email", "==", email));
+    const colName = getCollectionName(vertical, type);
+    const q = query(collection(db, colName), where("email", "==", email));
     const snapshot = await getDocs(q);
     return !snapshot.empty;
   } catch (e) {
@@ -98,4 +77,3 @@ export async function checkEmailExists(email, type) {
     return true; // fail safe
   }
 }
-

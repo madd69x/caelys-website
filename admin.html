@@ -76,7 +76,7 @@
   </div>
   
   <script type="module">
-    import { getRegistrations, getTeamApplications } from "/firebase-db.js";
+    import { getCollectionData } from "/firebase-db.js";
     async function loadTickets() {
       const token = localStorage.getItem('caelys_admin_token');
       if (!token) {
@@ -85,88 +85,72 @@
       }
       
       try {
-        const tickets = await getRegistrations();
-        const teamApps = await getTeamApplications();
-        const allCombined = [...tickets, ...teamApps];
+        const collections = [
+            { name: 'registrations_mun', title: 'Delegate Registrations - Model United Nations' },
+            { name: 'registrations_debate', title: 'Delegate Registrations - Debate & Rhetoric' },
+            { name: 'registrations_climate', title: 'Delegate Registrations - Climate Conclave' },
+            { name: 'team_mun', title: 'Team Applications - Model United Nations' },
+            { name: 'team_debate', title: 'Team Applications - Debate & Rhetoric' },
+            { name: 'team_climate', title: 'Team Applications - Climate Conclave' }
+        ];
+
+        let allCombined = [];
+        let fullHtml = '';
         
+        for (const col of collections) {
+            const data = await getCollectionData(col.name);
+            allCombined.push(...data);
+            
+            if (data.length > 0) {
+                const rows = data.map(t => `
+                  <tr>
+                    <td style="color: var(--accent-color); font-size: 0.8rem;">#${t.id.slice(-6)}</td>
+                    <td><strong>${t.name}</strong></td>
+                    <td>${t.email}</td>
+                    <td>${t.phone || 'N/A'}</td>
+                    <td>${t.institution}</td>
+                    <td style="font-size: 0.8rem; color: var(--pale-blue);">${t.timestamp ? t.timestamp.toDate().toLocaleString() : 'Just now'}</td>
+                  </tr>
+                `).join('');
+
+                fullHtml += `
+                <h2 class="display-large brutal-text" style="color: var(--ivory); font-size: 2rem; margin-top: 4rem; margin-bottom: 1rem; border-bottom: 2px solid var(--border-color); padding-bottom: 1rem;">${col.title.toUpperCase()} (Database: ${col.name})</h2>
+                <div style="overflow-x: auto;">
+                  <table class="data-table">
+                    <thead>
+                      <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Institution</th>
+                        <th>Timestamp</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      ${rows}
+                    </tbody>
+                  </table>
+                </div>
+                `;
+            }
+        }
+
         const tablesContainer = document.getElementById('tables-container');
         const stats = document.getElementById('stats');
         
-        // Render Stats
         const total = allCombined.length;
-        const counts = {};
-        allCombined.forEach(t => {
-          counts[t.vertical] = (counts[t.vertical] || 0) + 1;
-        });
         
         let statsHtml = `
-          <div class="stat-card">
+          <div class="stat-card" style="grid-column: 1 / -1;">
             <div class="stat-num brutal-text">${total}</div>
-            <div class="mono-text text-dim">Total Entries</div>
+            <div class="mono-text text-dim">Total Entries Across All Databases</div>
           </div>
         `;
-        
-        for (const [v, count] of Object.entries(counts)) {
-          statsHtml += `
-            <div class="stat-card">
-              <div class="stat-num brutal-text" style="color: var(--ivory); font-size: 3rem;">${count}</div>
-              <div class="mono-text text-dim">${v}</div>
-            </div>
-          `;
-        }
         stats.innerHTML = statsHtml;
         
-        // Render Tables
-        const verticals = ['Model United Nations', 'Debate & Rhetoric', 'Climate Conclave'];
-        
-        const renderTable = (title, data) => {
-            if (data.length === 0) return '';
-            const rows = data.reverse().map(t => `
-              <tr>
-                <td style="color: var(--accent-color); font-size: 0.8rem;">#${t.id.slice(-6)}</td>
-                <td><strong>${t.name}</strong></td>
-                <td>${t.email}</td>
-                <td>${t.phone || 'N/A'}</td>
-                <td>${t.institution}</td>
-                <td style="font-size: 0.8rem; color: var(--pale-blue);">${t.timestamp ? t.timestamp.toDate().toLocaleString() : 'Just now'}</td>
-              </tr>
-            `).join('');
-
-            return `
-            <h2 class="display-large brutal-text" style="color: var(--ivory); font-size: 2rem; margin-top: 4rem; margin-bottom: 1rem; border-bottom: 2px solid var(--border-color); padding-bottom: 1rem;">${title.toUpperCase()}</h2>
-            <div style="overflow-x: auto;">
-              <table class="data-table">
-                <thead>
-                  <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Phone</th>
-                    <th>Institution</th>
-                    <th>Timestamp</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  ${rows}
-                </tbody>
-              </table>
-            </div>
-            `;
-        };
-
-        let fullHtml = '';
-        verticals.forEach(v => {
-            const verticalTickets = tickets.filter(t => t.vertical === v);
-            fullHtml += renderTable(`Delegate Registrations - ${v}`, verticalTickets);
-        });
-
-        verticals.forEach(v => {
-            const verticalTeamApps = teamApps.filter(t => t.vertical === v);
-            fullHtml += renderTable(`Team Applications - ${v}`, verticalTeamApps);
-        });
-        
         if (fullHtml === '') {
-            fullHtml = '<p class="mono-text text-dim" style="text-align: center; margin-top: 4rem;">No entries found in the database.</p>';
+            fullHtml = '<p class="mono-text text-dim" style="text-align: center; margin-top: 4rem;">No entries found in any database collection.</p>';
         }
 
         tablesContainer.innerHTML = fullHtml;
@@ -176,6 +160,7 @@
         document.getElementById('tables-container').innerHTML = '<p style="text-align:center; color: red;">ERROR: COULD NOT CONNECT TO BACKEND DATABASE.</p>';
       }
     }
+
     
     loadTickets();
     setInterval(loadTickets, 5000); // Live update every 5 seconds
