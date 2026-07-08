@@ -1899,3 +1899,147 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
+/* ==========================================
+   ULTIMATE VISUAL OVERHAUL (JS LOGIC)
+   ========================================== */
+
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Inject Elements
+    const noise = document.createElement('div');
+    noise.className = 'noise-overlay';
+    document.body.appendChild(noise);
+
+    const cursorDot = document.createElement('div');
+    cursorDot.className = 'custom-cursor-dot';
+    document.body.appendChild(cursorDot);
+
+    const cursorOutline = document.createElement('div');
+    cursorOutline.className = 'custom-cursor-outline';
+    document.body.appendChild(cursorOutline);
+
+    const audioToggle = document.createElement('div');
+    audioToggle.id = 'audio-toggle';
+    audioToggle.className = 'muted';
+    audioToggle.innerHTML = '&#128263;'; // Muted speaker
+    document.body.appendChild(audioToggle);
+
+    // 2. Custom Cursor Logic
+    window.addEventListener('mousemove', (e) => {
+        cursorDot.style.left = e.clientX + 'px';
+        cursorDot.style.top = e.clientY + 'px';
+
+        // Add a slight delay for the outline (smooth trailing)
+        setTimeout(() => {
+            cursorOutline.style.left = e.clientX + 'px';
+            cursorOutline.style.top = e.clientY + 'px';
+        }, 50);
+    });
+
+    const hoverables = document.querySelectorAll('a, button, .brutal-btn, .register-card, input, select, textarea');
+    hoverables.forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            cursorDot.classList.add('hover');
+            cursorOutline.classList.add('hover');
+        });
+        el.addEventListener('mouseleave', () => {
+            cursorDot.classList.remove('hover');
+            cursorOutline.classList.remove('hover');
+        });
+    });
+
+    // 3. Scroll Reveal Animations
+    const revealElements = document.querySelectorAll('.brutal-section, .brutal-card, .timeline-item');
+    revealElements.forEach(el => el.classList.add('reveal-anim'));
+
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                // Play a subtle reveal sound when large sections appear
+                if (entry.target.classList.contains('brutal-section') && !audioToggle.classList.contains('muted')) {
+                    playGlobalSound('hover');
+                }
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    // 4. Ambient Drone & Toggle Logic
+    let ambientOsc1 = null;
+    let ambientOsc2 = null;
+    let ambientFilter = null;
+    
+    function startAmbientDrone() {
+        if (!globalAudioCtx) initAudioContext();
+        if (globalAudioCtx.state === 'suspended') globalAudioCtx.resume();
+        
+        if (ambientOsc1) return; // already playing
+        
+        // Deep sub drone
+        ambientOsc1 = globalAudioCtx.createOscillator();
+        ambientOsc1.type = 'sine';
+        ambientOsc1.frequency.value = 55; // A1
+        
+        // Higher harmonic drone
+        ambientOsc2 = globalAudioCtx.createOscillator();
+        ambientOsc2.type = 'triangle';
+        ambientOsc2.frequency.value = 110; // A2
+        
+        // Filter sweeping slowly
+        ambientFilter = globalAudioCtx.createBiquadFilter();
+        ambientFilter.type = 'lowpass';
+        ambientFilter.frequency.value = 200;
+        
+        const lfo = globalAudioCtx.createOscillator();
+        lfo.type = 'sine';
+        lfo.frequency.value = 0.05; // very slow sweep
+        const lfoGain = globalAudioCtx.createGain();
+        lfoGain.gain.value = 300;
+        
+        lfo.connect(lfoGain);
+        lfoGain.connect(ambientFilter.frequency);
+        
+        ambientOsc1.connect(ambientFilter);
+        ambientOsc2.connect(ambientFilter);
+        
+        const masterAmbient = globalAudioCtx.createGain();
+        masterAmbient.gain.value = 0.15; // keep it quiet in background
+        ambientFilter.connect(masterAmbient);
+        masterAmbient.connect(bgGain); // connect to our existing bgGain
+        
+        ambientOsc1.start();
+        ambientOsc2.start();
+        lfo.start();
+    }
+    
+    function stopAmbientDrone() {
+        if (ambientOsc1) {
+            ambientOsc1.stop();
+            ambientOsc2.stop();
+            ambientOsc1.disconnect();
+            ambientOsc2.disconnect();
+            ambientOsc1 = null;
+            ambientOsc2 = null;
+        }
+    }
+
+    audioToggle.addEventListener('click', () => {
+        const isMuted = audioToggle.classList.contains('muted');
+        if (isMuted) {
+            audioToggle.classList.remove('muted');
+            audioToggle.innerHTML = '&#128266;'; // Speaker on
+            initAudioContext();
+            globalAudioCtx.resume().then(() => {
+                startAmbientDrone();
+                playGlobalSound('startup');
+            });
+        } else {
+            audioToggle.classList.add('muted');
+            audioToggle.innerHTML = '&#128263;'; // Muted
+            stopAmbientDrone();
+        }
+    });
+});
