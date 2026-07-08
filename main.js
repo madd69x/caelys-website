@@ -2091,6 +2091,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 audioToggle.classList.remove('playing');
                 audioToggle.innerHTML = svgMuted;
                 if (typeof stopAmbientDrone === 'function') stopAmbientDrone();
+                if (globalAudioCtx) globalAudioCtx.suspend();
             }
         });
     }
