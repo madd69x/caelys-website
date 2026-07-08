@@ -937,3 +937,66 @@ a, button, .register-card, .brutal-btn, input, textarea, select {
     color: var(--text-color);
     box-shadow: none;
 }
+
+/* Enhanced Audio Button */
+#audio-toggle {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+#audio-toggle.playing {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 20px rgba(144, 170, 214, 0.4), inset 0 0 10px rgba(144, 170, 214, 0.2);
+    animation: pulseAudio 2s infinite alternate;
+}
+@keyframes pulseAudio {
+    0% { box-shadow: 0 0 15px rgba(144, 170, 214, 0.3); }
+    100% { box-shadow: 0 0 30px rgba(144, 170, 214, 0.6), inset 0 0 15px rgba(144, 170, 214, 0.4); }
+}
+
+/* Scanlines */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(
+        to bottom,
+        rgba(255,255,255,0),
+        rgba(255,255,255,0) 50%,
+        rgba(0,0,0,0.05) 50%,
+        rgba(0,0,0,0.05)
+    );
+    background-size: 100% 4px;
+    pointer-events: none;
+    z-index: 9997;
+    opacity: 0.3;
+}
+
+/* Premium Card Gradients */
+.brutal-card, .register-card {
+    background: linear-gradient(145deg, rgba(14,21,37,0.8) 0%, rgba(20,30,50,0.9) 100%);
+    position: relative;
+    overflow: hidden;
+}
+.brutal-card::before, .register-card::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: radial-gradient(circle at center, rgba(144, 170, 214, 0.1) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.5s;
+    pointer-events: none;
+}
+.brutal-card:hover::before, .register-card:hover::before {
+    opacity: 1;
+}
+
+/* Enhanced Glow for Custom Cursor */
+.custom-cursor-dot {
+    box-shadow: 0 0 15px var(--accent-color), 0 0 5px var(--ivory);
+}
+.custom-cursor-dot.hover {
+    box-shadow: 0 0 25px var(--ivory), 0 0 10px var(--accent-color);
+}

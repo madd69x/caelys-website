@@ -2043,3 +2043,80 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+// 5. Autoplay Audio & Better Button Icon
+document.addEventListener('DOMContentLoaded', () => {
+    const audioToggle = document.getElementById('audio-toggle');
+    
+    // Replace unicode with SVG sound wave icon
+    const svgMuted = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>';
+    const svgPlaying = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>';
+    
+    if (audioToggle) {
+        audioToggle.innerHTML = svgMuted;
+        
+        // Enhance button style programmatically
+        audioToggle.style.background = 'linear-gradient(135deg, rgba(28,34,60,0.9) 0%, rgba(14,21,37,0.9) 100%)';
+        audioToggle.style.boxShadow = '0 8px 32px rgba(0,0,0,0.3), inset 0 0 0 1px rgba(144,170,214,0.2)';
+    }
+
+    // Auto-start on ANY first interaction
+    let hasStarted = false;
+    const startAudioEngine = () => {
+        if (hasStarted) return;
+        hasStarted = true;
+        
+        if (!globalAudioCtx) initAudioContext();
+        globalAudioCtx.resume().then(() => {
+            if (typeof startAmbientDrone === 'function') startAmbientDrone();
+            if (audioToggle) {
+                audioToggle.classList.remove('muted');
+                audioToggle.innerHTML = svgPlaying;
+                audioToggle.classList.add('playing');
+            }
+        }).catch(e => {
+            // Context blocked
+            hasStarted = false; 
+        });
+        
+        // Remove listeners
+        ['mousedown', 'keydown', 'scroll', 'touchstart'].forEach(evt => {
+            window.removeEventListener(evt, startAudioEngine);
+        });
+    };
+
+    ['mousedown', 'keydown', 'scroll', 'touchstart'].forEach(evt => {
+        window.addEventListener(evt, startAudioEngine, { once: true, passive: true });
+    });
+    
+    // Update toggle click listener to use SVG
+    if (audioToggle) {
+        audioToggle.addEventListener('click', (e) => {
+            e.stopPropagation(); // prevent triggering the auto-start
+            const isMuted = audioToggle.classList.contains('muted');
+            if (isMuted) {
+                audioToggle.classList.remove('muted');
+                audioToggle.classList.add('playing');
+                audioToggle.innerHTML = svgPlaying;
+                if (!globalAudioCtx) initAudioContext();
+                globalAudioCtx.resume().then(() => {
+                    if (typeof startAmbientDrone === 'function') startAmbientDrone();
+                });
+            } else {
+                audioToggle.classList.add('muted');
+                audioToggle.classList.remove('playing');
+                audioToggle.innerHTML = svgMuted;
+                if (typeof stopAmbientDrone === 'function') stopAmbientDrone();
+            }
+        });
+    }
+});
+
+// 6. Canvas Parallax
+document.addEventListener('mousemove', (e) => {
+    const x = (e.clientX / window.innerWidth - 0.5) * 20;
+    const y = (e.clientY / window.innerHeight - 0.5) * 20;
+    const canvas = document.getElementById('webgl-canvas');
+    if (canvas) {
+        canvas.style.transform = "translate(" + x + "px, " + y + "px) scale(1.05)";
+    }
+});
